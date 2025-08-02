@@ -1,0 +1,239 @@
+[ec2-user@ip-172-31-47-172 ~]$ date
+Sat Aug  2 18:20:15 UTC 2025
+[ec2-user@ip-172-31-47-172 ~]$ ls
+[ec2-user@ip-172-31-47-172 ~]$ mkdir devops
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops
+[ec2-user@ip-172-31-47-172 ~]$ ls -l
+total 0
+drwxr-xr-x. 2 ec2-user ec2-user 6 Aug  2 18:21 devops
+[ec2-user@ip-172-31-47-172 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-172 ~]$ touch newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ ls -l
+total 0
+drwxr-xr-x. 2 ec2-user ec2-user 6 Aug  2 18:21 devops
+-rw-r--r--. 1 ec2-user ec2-user 0 Aug  2 18:22 newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ ^C
+[ec2-user@ip-172-31-47-172 ~]$ cd devops/
+[ec2-user@ip-172-31-47-172 devops]$ pwd
+/home/ec2-user/devops
+[ec2-user@ip-172-31-47-172 devops]$ cd ..
+[ec2-user@ip-172-31-47-172 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-172 ~]$ cd ..\
+> ;
+[ec2-user@ip-172-31-47-172 home]$ cd ..
+[ec2-user@ip-172-31-47-172 /]$ pwd
+/
+[ec2-user@ip-172-31-47-172 /]$ ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[ec2-user@ip-172-31-47-172 /]$ cd bin
+[ec2-user@ip-172-31-47-172 bin]$ ls
+'['                     fc                      lsirq                resizecons                systemd-inhibit
+ ac                     fg                      lslocks              resolvectl                systemd-machine-id-setup
+ acpi_listen            fgconsole               lslogins             rev                       systemd-mount
+ addr2line              fgrep                   lsmcli               rm                        systemd-notify
+ alias                  file                    lsmd                 rmdir                     systemd-path
+ amazon-ssm-agent       fincore                 lsmem                rnano                     systemd-repart
+ apropos                find                    lsns                 rngtest                   systemd-resolve
+ apropos.man-db         find-repos-of-install   lsof                 rpcbind                   systemd-run
+ ar                     findmnt                 make-dummy-cert      rpcinfo                   systemd-socket-activate
+ arch                   fips-finish-install     man                  rpm                       systemd-stdio-bridge
+ arpaname               fips-mode-setup         man-recode           rpm2archive               systemd-sysext
+ arping                 flock                   man.man-db           rpm2cpio                  systemd-sysusers
+ as                     fmt                     mandb                rpmdb                     systemd-tmpfiles
+ at                     fold                    manpath              rpmkeys                   systemd-tty-ask-password-agent
+ atq                    free                    mapscrn              rpmquery                  systemd-umount
+ atrm                   funzip                  mcookie              rpmverify                 tabs
+ attr                   fuse2fs                 md5sum               rst2html                  tac
+ audit2allow            gapplication            mesg                 rst2html4                 tail
+ audit2why              gawk                    miniterm-3.9.py      rst2html5                 tapestat
+ aulast                 gdbus                   miniterm-3.py        rst2latex                 tar
+ aulastlog              gencat                  miniterm.py          rst2man                   taskset
+ ausyscall              geqn                    mkdir                rst2odt                   tbl
+ auvirt                 getconf                 mkfifo               rst2odt_prepstyles        tcptraceroute
+ awk                    getent                  mknod                rst2pseudoxml             tcsh
+ aws                    getfacl                 mktemp               rst2s5                    tee
+ aws_completer          getfattr                mmdblookup           rst2xetex                 test
+ b2sum                  getkeycodes             modulemd-validator   rst2xml                   tic
+ base32                 getopt                  more                 rstpep2html               time
+ base64                 getopts                 mount                rsync                     timedatectl
+ basename               gettext                 mountpoint           rsync-ssl                 timeout
+ basenc                 gettext.sh              mpstat               run-parts                 tload
+ bash                   gio                     msgattrib            runcon                    toe
+ bashbug                gio-querymodules-64     msgcat               rvi                       top
+ bashbug-64             glib-compile-schemas    msgcmp               rview                     touch
+ batch                  gneqn                   msgcomm              rvim                      tput
+ bc                     gnroff                  msgconv              sadf                      tr
+ bg                     gpasswd                 msgen                sar                       tracepath
+ bootctl                gpg                     msgexec              sbattach                  traceroute
+ bunzip2                gpg-error               msgfilter            sbkeysync                 traceroute6
+ busctl                 gpg2                    msgfmt               sbsiglist                 troff
+ bzcat                  gpgme-json              msggrep              sbsign                    true
+ bzcmp                  gpgv2                   msginit              sbvarsign                 truncate
+ bzdiff                 gpic                    msgmerge             sbverify                  trust
+ bzegrep                gprof                   msgunfmt             scp                       tset
+ bzfgrep                grep                    msguniq              screen                    tsort
+ bzgrep                 groff                   mv                   script                    tty
+ bzip2                  grops                   named-checkzone      scriptlive                turbostat
+ bzip2recover           grotty                  named-compilezone    scriptreplay              type
+ bzless                 groups                  named-nzd2nzf        sdiff                     tzselect
+ bzmore                 growpart                namei                secon                     uclampset
+ c++filt                grub2-amazon-setup      nano                 sed                       udevadm
+ ca-legacy              grub2-editenv           needs-restarting     sedismod                  ul
+ cal                    grub2-file              neqn                 sedispol                  ulimit
+ captoinfo              grub2-menulst2cfg       netstat              semodule_expand           umask
+ cat                    grub2-mkimage           networkctl           semodule_link             umount
+ catchsegv              grub2-mkpasswd-pbkdf2   newgidmap            semodule_package          unalias
+ catman                 grub2-mkrelpath         newgrp               semodule_unpackage        uname
+ cd                     grub2-mount             newuidmap            seq                       uname26
+ centrino-decode        grub2-script-check      ngettext             sestatus                  unexpand
+ cfn-elect-cmd-leader   gsettings               nice                 set-hostname-imds         unicode_start
+ cfn-get-metadata       gsoelim                 nisdomainname        setarch                   unicode_stop
+ cfn-hup                gtar                    nl                   setfacl                   uniq
+ cfn-init               gtbl                    nm                   setfattr                  unlink
+ cfn-send-cmd-event     gtroff                  nohup                setfont                   unshare
+ cfn-send-cmd-result    gunzip                  nproc                setkeycodes               unxz
+ cfn-signal             gzexe                   nroff                setleds                   unzip
+ chacl                  gzip                    nsec3hash            setmetamode               unzipsfx
+ chage                  hardlink                nsenter              setpriv                   unzstd
+ chardetect             hash                    nslookup             setsid                    update-ca-trust
+ chattr                 head                    nsupdate             setterm                   update-crypto-policies
+ chcat                  hexdump                 numfmt               setup-nsssysinit          uptime
+ chcon                  hibinit-agent           objcopy              setup-nsssysinit.sh       userdbctl
+ checkmodule            homectl                 objdump              setup-policy-routes       users
+ checkpolicy            host                    od                   setvtrgb                  usleep
+ chevron                hostid                  oomctl               sftp                      utmpdump
+ chgrp                  hostname                openssl              sg                        uuidgen
+ chmem                  hostnamectl             openvt               sh                        uuidparse
+ chmod                  hunspell                os-prober            sha1hmac                  vdir
+ choom                  i386                    p11-kit              sha1sum                   vi
+ chown                  iconv                   package-cleanup      sha224hmac                view
+ chronyc                id                      passwd               sha224sum                 vim
+ chrt                   info                    paste                sha256hmac                vimdiff
+ chvt                   infocmp                 pathchk              sha256sum                 vimtutor
+ cifsiostat             infotocap               peekfd               sha384hmac                vlock
+ cksum                  install                 perl                 sha384sum                 vmstat
+ clear                  ionice                  perl5.32.1           sha512hmac                w
+ clockdiff              iostat                  perldoc              sha512sum                 wait
+ cloud-id               ipcmk                   pgrep                showconsolefont           wall
+ cloud-init             ipcrm                   pic                  showkey                   watch
+ cloud-init-per         ipcs                    piconv               shred                     wc
+ cmp                    irqtop                  pidof                shuf                      wcurl
+ col                    isosize                 pidstat              sim_lsmplugin             wdctl
+ colcrt                 jemalloc.sh             pidwait              simc_lsmplugin            wget
+ colrm                  jobs                    ping                 size                      whatis
+ column                 join                    pinky                skill                     whatis.man-db
+ comm                   journalctl              pkg-config           slabtop                   whereis
+ command                jp.py                   pkgconf              sleep                     which
+ coredumpctl            jq                      pkill                sm3hmac                   whiptail
+ cp                     jsondiff                pldd                 snice                     who
+ cpio                   jsondiff-3              pmap                 soelim                    whoami
+ cpupower               jsondiff-3.9            pod2man              soelim.groff              write
+ csh                    jsonpatch               pod2text             sort                      x86_64
+ csplit                 jsonpatch-3             pod2usage            sotruss                   x86_64-amazon-linux-gnu-pkg-config
+ curl                   jsonpatch-3.9           portablectl          split                     x86_energy_perf_policy
+ cut                    jsonpointer             post-grohtml         sprof                     xargs
+ cvtsudoers             jsonpointer-3           powernow-k8-decode   ssh                       xgettext
+ cyrusbdb2current       jsonpointer-3.9         pr                   ssh-add                   xmlcatalog
+ date                   jsonschema              pre-grohtml          ssh-agent                 xmllint
+ dbus-broker            kbd_mode                preconv              ssh-copy-id               xmlwf
+ dbus-broker-launch     kbdinfo                 printenv             ssh-keygen                xxd
+ dc                     kbdrate                 printf               ssh-keyscan               xz
+ dd                     kernel-install          prlimit              ssm-agent-worker          xzcat
+ deallocvt              keyctl                  prtstat              ssm-cli                   xzcmp
+ debuginfo-install      kill                    ps                   ssm-document-worker       xzdec
+ debuginfod-find        killall                 psfaddtable          ssm-session-logger        xzdiff
+ delv                   kmod                    psfgettable          ssm-session-worker        xzegrep
+ df                     last                    psfstriptable        sss_ssh_authorizedkeys    xzfgrep
+ diff                   lastb                   psfxtable            sss_ssh_knownhostsproxy   xzgrep
+ diff3                  lastcomm                pslog                stap-merge                xzless
+ dig                    lastlog                 pstree               stap-report               xzmore
+ dir                    lchfn                   pstree.x11           stapbpf                   yes
+ dircolors              lchsh                   ptx                  stapdyn                   ypdomainname
+ dirname                ld                      pwd                  staprun                   yum
+ distro                 ld.bfd                  pwdx                 stapsh                    yum-builddep
+ dmesg                  ld.so                   pwmake               stat                      yum-config-manager
+ dnf                    ldd                     pwscore              stdbuf                    yum-debug-dump
+ dnf-3                  less                    pydoc                strace                    yum-debug-restore
+ dnsdomainname          lessecho                pydoc3               strace-log-merge          yum-groups-manager
+ dnstap-read            lesskey                 pydoc3.9             strings                   yumdownloader
+ domainname             lesspipe.sh             python3              strip                     zcat
+ dracut                 lexgrog                 python3.9            stty                      zcmp
+ du                     link                    pzstd                su                        zdiff
+ dumpkeys               linux-boot-prober       quota                sudo                      zdump
+ dwz                    linux32                 quotasync            sudoedit                  zegrep
+ ec2-metadata           linux64                 ranlib               sudoreplay                zfgrep
+ echo                   ln                      read                 sum                       zforce
+ ed                     loadkeys                readelf              sync                      zgrep
+ efisecdb               loadunimap              readlink             systemctl                 zip
+ efivar                 locale                  realpath             systemd-analyze           zipcloak
+ egrep                  localectl               recode-sr-latin      systemd-ask-password      zipgrep
+ eject                  localedef               red                  systemd-cat               zipinfo
+ elfedit                logger                  rename               systemd-cgls              zipnote
+ encguess               login                   renew-dummy-cert     systemd-cgtop             zipsplit
+ env                    loginctl                renice               systemd-creds             zless
+ envsubst               logname                 repo-graph           systemd-cryptenroll       zmore
+ eqn                    look                    repoclosure          systemd-delta             znew
+ ex                     ls                      repodiff             systemd-detect-virt       zsoelim
+ expand                 lsattr                  repomanage           systemd-dissect           zstd
+ expr                   lsblk                   repoquery            systemd-escape            zstdcat
+ factor                 lscpu                   reposync             systemd-firstboot         zstdgrep
+ fallocate              lsinitrd                repotrack            systemd-hwdb              zstdless
+ false                  lsipc                   reset                systemd-id128             zstdmt
+[ec2-user@ip-172-31-47-172 bin]$ cd /home/devops
+-bash: cd: /home/devops: No such file or directory
+[ec2-user@ip-172-31-47-172 bin]$ cd /home/ec2-user/devops
+[ec2-user@ip-172-31-47-172 devops]$ cd /home/^[[200~ec2-user@ip-172-31-47-172~/devops
+-bash: cd: $'/home/\E[200~ec2-user@ip-172-31-47-172~/devops': No such file or directory
+[ec2-user@ip-172-31-47-172 devops]$ cd /home/ec2-user/devops
+[ec2-user@ip-172-31-47-172 devops]$ ls
+[ec2-user@ip-172-31-47-172 devops]$ touch devopsfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ ls
+devopsfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ rm devopsfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ ls
+[ec2-user@ip-172-31-47-172 devops]$ pwd
+/home/ec2-user/devops
+[ec2-user@ip-172-31-47-172 devops]$ cd ..
+[ec2-user@ip-172-31-47-172 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ mkdir cloud
+[ec2-user@ip-172-31-47-172 ~]$ ls
+cloud  devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ rm -r cloud
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+
+
+Less and More display the page in paginated form , 
+tail -f  -> yeh monitor krtsa hai page ki last me commands add ho rhi hai too usko bhi dikha doo  
+
+Last login: Sat Aug  2 18:41:13 2025 from 13.48.4.203
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ cd devops/
+[ec2-user@ip-172-31-47-172 devops]$ touch demofile.txt
+[ec2-user@ip-172-31-47-172 devops]$ ls
+demofile.txt
+[ec2-user@ip-172-31-47-172 devops]$ cat demofile.txt
+[ec2-user@ip-172-31-47-172 devops]$ echo "hello dosto"
+hello dosto
+[ec2-user@ip-172-31-47-172 devops]$ echo "putting the content in file used > " > demofile.txt
+[ec2-user@ip-172-31-47-172 devops]$ cat demofile.txt
+putting the content in file used > 
+[ec2-user@ip-172-31-47-172 devops]$ echo "puttitng new data in new file" > newfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ echo newfile.txt
+newfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ cat newfile.txt
+puttitng new data in new file
+[ec2-user@ip-172-31-47-172 devops]$ head newfile.txt
+puttitng new data in new file
+[ec2-user@ip-172-31-47-172 devops]$ tail newfile.txt
+puttitng new data in new file
+
