@@ -1,0 +1,262 @@
+                                           Usersd and File Managements in 1 one Shot Commands
+
+System management commands  :
+
+uname : kon se platform pe linux chala rhe hoo
+uptime : aapka system kitni der se chal rha hai
+date -> give current date
+
+difference between who and whoami :
+who -> batata hai kon se user ne kab lotgin kiya tha , kitne users hai system pe
+whoami -> cuurent system pe login user ka username only
+who -> deatils of current users login in system
+who -> return a list of users logtin isystems , whereas who retuns only one usr
+which -> give me the locatrion of the files , commands , modules
+id -> give sthe id of user , griup id 
+sudo -> papa (root user) , ghar ka main banda jiske paas saari powers hai
+
+sudo -> super user do , permission chahiye koi kaam krne k liye uske sudo kr lo
+sudo basically ekk group jiske andar system ke admins add hai  groiup ke pass peermission hai to do crazy things
+cat /etc/passwd  -> list of users 
+cd root- > no permissio n to go inside , as it is main banda room 
+shutdown -> failed as a normal user , so add into sudo group so have previlidges and powers to do this
+apt -> application package mananger , system me kuch bhi install delete krne k mliye 
+The "apt command not found" error on an Amazon Linux instance indicates that the package manager used by Debian-based distributions (like Ubuntu) is not present. Amazon Linux is a Red Hat-based distribution, and therefore uses yum (or dnf in Amazon Linux 2023) as its default package manager.
+
+sudo apt-get update -> update the systems to dowload , updates other modules
+ctrl r -> reverse search
+
+ubuntu@ip-172-31-10-157:~$ apt install docker.io
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+
+ubuntu@ip-172-31-10-157:~$ sudo apt install docker.io
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Package docker.io is not available, but is referred to by another package.
+This may mean that the package is missing, has been obsoleted, or
+is only available from another source
+
+E: Package 'docker.io' has no installation candidate
+
+ubuntu@ip-172-31-10-157:~$ sudo apt-get install docker.io
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Package docker.io is not available, but is referred to by another package.
+
+means docker ko install krne k liye necessary files and libraries nhi hai system pe , so means update kr lo system ko 
+
+sudo apt-get install package name -> install library
+sudo apt remove package -> remove library
+
+note : yum ,dnf , pacman , portage -> all tese are same type commands (application package manbagers he hai)
+
+[ec2-user@ip-172-31-47-172 ~]$ echo "User and file management commands"
+User and file management commands
+[ec2-user@ip-172-31-47-172 ~]$ echo "System Level commands start"
+System Level commands start
+[ec2-user@ip-172-31-47-172 ~]$ client_loop: send disconnect: Connection reset
+
+C:\Users\hp\Downloads>nname
+'nname' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\hp\Downloads>uname
+'uname' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\hp\Downloads>ssh -i "Linuxdevops.pem" ec2-user@ec2-13-48-42-245.eu-north-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Aug  3 06:22:11 2025 from 106.219.237.190
+[ec2-user@ip-172-31-47-172 ~]$ uname
+Linux
+[ec2-user@ip-172-31-47-172 ~]$ uptime
+ 06:35:42 up 11:49,  3 users,  load average: 0.00, 0.00, 0.00
+[ec2-user@ip-172-31-47-172 ~]$ date
+Sun Aug  3 06:36:12 UTC 2025
+[ec2-user@ip-172-31-47-172 ~]$ client_loop: send disconnect: Connection reset
+
+C:\Users\hp\Downloads>ssh -i "Linuxdevops.pem" ec2-user@ec2-13-48-42-245.eu-north-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Aug  3 06:34:37 2025 from 106.219.237.190
+[ec2-user@ip-172-31-47-172 ~]$ w2hoami
+-bash: w2hoami: command not found
+[ec2-user@ip-172-31-47-172 ~]$ whoami
+ec2-user
+[ec2-user@ip-172-31-47-172 ~]$ who
+ec2-user pts/0        2025-08-03 05:53 (106.219.237.190)
+ec2-user pts/1        2025-08-03 06:22 (106.219.237.190)
+ec2-user pts/2        2025-08-03 06:34 (106.219.237.190)
+ec2-user pts/3        2025-08-03 06:44 (106.219.237.190)
+[ec2-user@ip-172-31-47-172 ~]$ whiuch cp
+-bash: whiuch: command not found
+[ec2-user@ip-172-31-47-172 ~]$ which cp
+/usr/bin/cp
+[ec2-user@ip-172-31-47-172 ~]$ which bash
+/usr/bin/bash
+[ec2-user@ip-172-31-47-172 ~]$ id
+uid=1000(ec2-user) gid=1000(ec2-user) groups=1000(ec2-user),4(adm),10(wheel),190(systemd-journal) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[ec2-user@ip-172-31-47-172 ~]$ id
+uid=1000(ec2-user) gid=1000(ec2-user) groups=1000(ec2-user),4(adm),10(wheel),190(systemd-journal) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+[ec2-user@ip-172-31-47-172 ~]$ cd /etc/
+[ec2-user@ip-172-31-47-172 etc]$ ls
+DIR_COLORS                chrony.conf      dracut.conf.d  hibinit-config.cfg  libibverbs.d    nanorc         profile.d         screenrc       sudoers.d
+DIR_COLORS.lightbgcolor   chrony.d         environment    host.conf           libnl           netconfig      protocols         security       sysconfig
+GREP_COLORS               chrony.keys      ethertypes     hostname            libreport       networks       rc.d              selinux        sysctl.conf
+NetworkManager            cifs-utils       exports        hosts               libuser.conf    nfs.conf       rc0.d             services       sysctl.d
+X11                       cloud            exports.d      idmapd.conf         locale.conf     nfsmount.conf  rc1.d             sestatus.conf  system-release
+acpi                      cron.daily       filesystems    image-id            localtime       nsswitch.conf  rc2.d             shadow         system-release-cpe
+adjtime                   cron.hourly      fstab          init.d              login.defs      openldap       rc3.d             shadow-        systemd
+aliases                   cron.monthly     gcrypt         inittab             logrotate.conf  opt            rc4.d             shells         terminfo
+alternatives              cron.weekly      gnupg          inputrc             logrotate.d     os-release     rc5.d             skel           tmpfiles.d
+amazon                    crontab          groff          issue               lsm             pam.d          rc6.d             ssh            trusted-key.key
+amazon-linux-release      crypto-policies  group          issue.net           machine-id      passwd         request-key.conf  ssl            udev
+amazon-linux-release-cpe  csh.cshrc        group-         kernel              magic           passwd-        request-key.d     sssd           update-motd.d
+at.deny                   csh.login        grub.d         keyutils            man_db.conf     pkcs11         resolv.conf       statetab.d     vimrc
+audit                     dbus-1           grub2-efi.cfg  krb5.conf           mke2fs.conf     pkgconfig      rpc               subgid         virc
+bash_completion.d         default          grub2.cfg      krb5.conf.d         modprobe.d      pki            rpm               subgid-        wgetrc
+bashrc                    depmod.d         gshadow        ld.so.cache         modules-load.d  pm             rsyncd.conf       subuid         xattr.conf
+bindresvport.blacklist    dhcp             gshadow-       ld.so.conf          motd            popt.d         rsyslog.d         subuid-        xdg
+binfmt.d                  dnf              gss            ld.so.conf.d        motd.d          printcap       rwtab.d           sudo.conf      yum.repos.d
+chkconfig.d               dracut.conf      gssproxy       libaudit.conf       mtab            profile        sasl2             sudoers
+[ec2-user@ip-172-31-47-172 etc]$ passwd
+Changing password for user ec2-user.
+Current password:
+passwd: Authentication token manipulation error
+[ec2-user@ip-172-31-47-172 etc]$ cat passw3d
+cat: passw3d: No such file or directory
+[ec2-user@ip-172-31-47-172 etc]$ cat passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+systemd-oom:x:999:999:systemd Userspace OOM Killer:/:/usr/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/usr/share/empty.sshd:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+libstoragemgmt:x:997:997:daemon account for libstoragemgmt:/:/usr/sbin/nologin
+systemd-coredump:x:996:996:systemd Core Dumper:/:/usr/sbin/nologin
+systemd-timesync:x:995:995:systemd Time Synchronization:/:/usr/sbin/nologin
+chrony:x:994:994:chrony system user:/var/lib/chrony:/sbin/nologin
+ec2-instance-connect:x:993:993::/home/ec2-instance-connect:/sbin/nologin
+stapunpriv:x:159:159:systemtap unprivileged user:/var/lib/stapunpriv:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+[ec2-user@ip-172-31-47-172 etc]$ cd root
+-bash: cd: root: No such file or directory
+[ec2-user@ip-172-31-47-172 etc]$ ls
+DIR_COLORS                chrony.conf      dracut.conf.d  hibinit-config.cfg  libibverbs.d    nanorc         profile.d         screenrc       sudoers.d
+DIR_COLORS.lightbgcolor   chrony.d         environment    host.conf           libnl           netconfig      protocols         security       sysconfig
+GREP_COLORS               chrony.keys      ethertypes     hostname            libreport       networks       rc.d              selinux        sysctl.conf
+NetworkManager            cifs-utils       exports        hosts               libuser.conf    nfs.conf       rc0.d             services       sysctl.d
+X11                       cloud            exports.d      idmapd.conf         locale.conf     nfsmount.conf  rc1.d             sestatus.conf  system-release
+acpi                      cron.daily       filesystems    image-id            localtime       nsswitch.conf  rc2.d             shadow         system-release-cpe
+adjtime                   cron.hourly      fstab          init.d              login.defs      openldap       rc3.d             shadow-        systemd
+aliases                   cron.monthly     gcrypt         inittab             logrotate.conf  opt            rc4.d             shells         terminfo
+alternatives              cron.weekly      gnupg          inputrc             logrotate.d     os-release     rc5.d             skel           tmpfiles.d
+amazon                    crontab          groff          issue               lsm             pam.d          rc6.d             ssh            trusted-key.key
+amazon-linux-release      crypto-policies  group          issue.net           machine-id      passwd         request-key.conf  ssl            udev
+amazon-linux-release-cpe  csh.cshrc        group-         kernel              magic           passwd-        request-key.d     sssd           update-motd.d
+at.deny                   csh.login        grub.d         keyutils            man_db.conf     pkcs11         resolv.conf       statetab.d     vimrc
+audit                     dbus-1           grub2-efi.cfg  krb5.conf           mke2fs.conf     pkgconfig      rpc               subgid         virc
+bash_completion.d         default          grub2.cfg      krb5.conf.d         modprobe.d      pki            rpm               subgid-        wgetrc
+bashrc                    depmod.d         gshadow        ld.so.cache         modules-load.d  pm             rsyncd.conf       subuid         xattr.conf
+bindresvport.blacklist    dhcp             gshadow-       ld.so.conf          motd            popt.d         rsyslog.d         subuid-        xdg
+binfmt.d                  dnf              gss            ld.so.conf.d        motd.d          printcap       rwtab.d           sudo.conf      yum.repos.d
+chkconfig.d               dracut.conf      gssproxy       libaudit.conf       mtab            profile        sasl2             sudoers
+[ec2-user@ip-172-31-47-172 etc]$ client_loop: send disconnect: Connection reset
+
+C:\Users\hp\Downloads>pt
+'pt' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\hp\Downloads>apt
+'apt' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\hp\Downloads>ssh -i "Linuxdevops.pem" ec2-user@ec2-13-48-42-245.eu-north-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Aug  3 06:44:32 2025 from 106.219.237.190
+[ec2-user@ip-172-31-47-172 ~]$ apt
+-bash: apt: command not found
+[ec2-user@ip-172-31-47-172 ~]$ apt
+-bash: apt: command not found
+[ec2-user@ip-172-31-47-172 ~]$ apt install docker.io
+-bash: apt: command not found
+[ec2-user@ip-172-31-47-172 ~]$ sudo apt install docker.io
+sudo: apt: command not found
+[ec2-user@ip-172-31-47-172 ~]$ client_loop: send disconnect: Connection reset
+
+C:\Users\hp\Downloads>The "apt command not found" error on an Amazon Linux instance indicates that the package manager used by Debian-based distributions (like Ubuntu) is not present. Amazon Linux is a Red Hat-based distribution, and therefore uses yum (or dnf in Amazon Linux 2023) as its default package manager.
+'The' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\hp\Downloads>
+C:\Users\hp\Downloads>ssh -i "Linuxdevops.pem" ec2-user@ec2-13-48-42-245.eu-north-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Aug  3 07:07:54 2025 from 106.219.237.190
+[ec2-user@ip-172-31-47-172 ~]$ sudo apt-get update
+sudo: apt-get: command not found
+[ec2-user@ip-172-31-47-172 ~]$ yum install docker.io
+Error: This command has to be run with superuser privileges (under the root user on most systems).
+[ec2-user@ip-172-31-47-172 ~]$ sudo yum install docker.io
+Amazon Linux 2023 Kernel Livepatch repository                                                                                           195 kB/s |  19 kB     00:00
+No match for argument: docker.io
+Error: Unable to find a match: docker.io
+[ec2-user@ip-172-31-47-172 ~]$  sudo yum-get update;
+sudo: yum-get: command not found
+
+
+
+ 
+
