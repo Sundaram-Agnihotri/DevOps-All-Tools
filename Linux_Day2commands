@@ -1,0 +1,331 @@
+
+File Operation Commands : 
+
+cp -> copy the file at particular directory in form of source , destination folder location
+
+[ec2-user@ip-172-31-47-172 ~]$ mkdir copyfolder
+[ec2-user@ip-172-31-47-172 ~]$ pwd
+/home/ec2-user
+[ec2-user@ip-172-31-47-172 ~]$ ls
+copyfolder  devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ cd devops
+[ec2-user@ip-172-31-47-172 devops]$ ls
+demofile.txt  newfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ ls\
+> ;\
+> ;
+-bash: syntax error near unexpected token `;;'
+[ec2-user@ip-172-31-47-172 devops]$ ls
+demofile.txt  newfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ cp demofie.txt copyfolder/
+cp: cannot stat 'demofie.txt': No such file or directory
+[ec2-user@ip-172-31-47-172 devops]$ cp demofile.txt /home/ec2-user/copyfolder
+[ec2-user@ip-172-31-47-172 devops]$ ls
+demofile.txt  newfile.txt
+[ec2-user@ip-172-31-47-172 devops]$ cd ..
+[ec2-user@ip-172-31-47-172 ~]$ ls
+copyfolder  devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ cd copyfolder/
+[ec2-user@ip-172-31-47-172 copyfolder]$ ls
+demofile.txt
+[ec2-user@ip-172-31-47-172 copyfolder]$ cat demofile.txt
+putting the content in file used > 
+[ec2-user@ip-172-31-47-172 copyfolder]$ cd ..
+[ec2-user@ip-172-31-47-172 ~]$ rm -r copyfolder
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+
+
+
+mv -> move file/folder from one location to other\
+this command is also useed to rename a folder like for example , i have to rename the devops folder to linuxdevops
+
+[ec2-user@ip-172-31-47-172 copyfolder]$ cat demofile.txt
+putting the content in file used > 
+[ec2-user@ip-172-31-47-172 copyfolder]$ cd ..
+[ec2-user@ip-172-31-47-172 ~]$ rm -r copyfolder
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ ls
+devops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ mv devops/linusdevops
+mv: missing destination file operand after 'devops/linusdevops'
+Try 'mv --help' for more information.
+[ec2-user@ip-172-31-47-172 ~]$ mv devops/ linusdevops
+[ec2-user@ip-172-31-47-172 ~]$ ls
+linusdevops  newfile.txt
+
+wc -> command to tell how many words , lines and bytes of content in file 
+
+ec2-user@ip-172-31-47-172 ~]$ mv devops/ linusdevops
+[ec2-user@ip-172-31-47-172 ~]$ ls
+linusdevops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ cat newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ cd linusdevops
+[ec2-user@ip-172-31-47-172 linusdevops]$ ls
+demofile.txt  newfile.txt
+[ec2-user@ip-172-31-47-172 linusdevops]$ cat demofile.txt
+putting the content in file used > 
+[ec2-user@ip-172-31-47-172 linusdevops]$ wc demofile.txt
+ 1  7 36 demofile.txt
+
+softlink edenote by ln -s
+
+[ec2-user@ip-172-31-47-172 linusdevops]$ ls
+demofile.txt  newfile.txt
+[ec2-user@ip-172-31-47-172 linusdevops]$ echo "this is used to find the soft link of file" > solftdevopsfile.txt
+[ec2-user@ip-172-31-47-172 linusdevops]$ pwd
+/home/ec2-user/linusdevops
+[ec2-user@ip-172-31-47-172 linusdevops]$ ln -s /home/ec2-user/linuxdevops/solftdevopsfile.txt softlinkfile.txt
+[ec2-user@ip-172-31-47-172 linusdevops]$ ls
+demofile.txt  newfile.txt  softlinkfile.txt  solftdevopsfile.txt
+[ec2-user@ip-172-31-47-172 linusdevops]$ ltr softlinkfile.txt
+-bash: ltr: command not found
+[ec2-user@ip-172-31-47-172 linusdevops]$ ls -ltr
+total 12
+-rw-r--r--. 1 ec2-user ec2-user 36 Aug  2 18:49 demofile.txt
+-rw-r--r--. 1 ec2-user ec2-user 30 Aug  2 18:50 newfile.txt
+-rw-r--r--. 1 ec2-user ec2-user 43 Aug  2 19:27 solftdevopsfile.txt
+lrwxrwxrwx. 1 ec2-user ec2-user 46 Aug  2 19:31 softlinkfile.txt -> /home/ec2-user/linuxdevops/solftdevopsfile.txt
+
+HardLink doesnot required any flag just write ln :
+
+ubuntu@ip-172-31-10-157:~$ cat linux_for_devops/cloud/devops-file.txt
+hello dosto
+ubuntu@ip-172-31-10-157:~$ ln linux_for_devops/cloud/devops-file.txt harlink-file
+ubuntu@ip-172-31-10-157:~$ ls
+cloud  demofile.txt  harlink-file  linux_for_devops  myfile.txt  newfile.txt  softlink-file
+ubuntu@ip-172-31-10-157:~$ cat harlink-file
+hello dosto
+ubuntu@ip-172-31-10-157:~$ echo "hello dosto" > linux_for_devops/cloud/devops-file.txt
+ubuntu@ip-172-31-10-157:~$ rm linux_for_devops/cloud/devops-file.txt
+ubuntu@ip-172-31-10-157:~$ ls
+cloud  demofile.txt  harlink-file  linux_for_devops  myfile.txt  newfile.txt  softlink-file
+ubuntu@ip-172-31-10-157:~$ cat harlink-file
+hello dosto
+
+cut -> used to cut the bytes of data from the file { give me the data of user specific range of space }
+
+ubuntu@ip-172-31-10-157:~$ cat myfile.txt
+this is my file
+ubuntu@ip-172-31-10-157:~$ cut -b 1 myfile.txt
+t
+ubuntu@ip-172-31-10-157:~$ cut -b 1-4 myfile.txt
+this
+ubuntu@ip-172-31-10-157:~$
+
+
+
+tee -> text echo bhi hojeyga or file me save bhi hojeyaga
+
+echo "hello" | tee hello.txt
+
+
+
+
+
+
+
+diff sirf 2 files ka diffence batata hai
+wc is working on 2 or more than 2 files
+
+ubuntu@ip-172-31-10-157:~$ diff hello.txt demofile.txt
+1c1
+< hello
+---
+> hello dosto
+ubuntu@ip-172-31-10-157:~$ diff hello.txt demofile.txt myfile.txt
+diff: extra operand 'myfile.txt'
+diff: Try 'diff --help' for more information.
+ubuntu@ip-172-31-10-157:~$ wc hello.txt demofile.txt myfile.txt
+  1   1   6 hello.txt
+  2   2  12 demofile.txt
+  1   4  16 myfile.txt
+  4   7  34 total
+
+[ec2-user@ip-172-31-47-172 ~]$ ls
+linusdevops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ vi newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ cat newfile.txt
+my name is sundaram , and i am learning devops
+w
+[ec2-user@ip-172-31-47-172 ~]$ 
+
+vi -> open an editor in terminal , write the content using the i key and escape button after writing and :wq is used for write and quit hence the c ontent is save in outr file
+
+                                                                      Login Related Commands : 
+
+df -> disk usage
+ssh -> used for ssh connecting to the ec2 instance in other az
+du -> disk utility -> aapko kisi folder ke baare me jaanna hai 
+. -> current folder ke baare me saari information deta hai
+the hidden folder are started generally from (.)
+top ->saare process batata hai \
+ps -> bash kis proces pe hai , pid etc
+fuser -> file system attach ke baare me batata hai {kis file system process pe chl rha hai )
+kill -> process kill krna hai
+free -> disk space ko batata hai
+free -h ->detail me batata hai free space
+nohup -> application ke logs file me save kr lega (generally nohup.out) naam ki file bana dega
+in nohup command we can append the many logs of many commands , just appemnd from the last command
+
+head -n 5 filename -> isse file ke upar ke 5 lines dega output pe
+vmstat -> details of virtual memory 
+
+
+Last login: Sun Aug  3 05:38:03 2025 from 13.48.4.203
+[ec2-user@ip-172-31-47-172 ~]$ ls
+linusdevops  newfile.txt
+[ec2-user@ip-172-31-47-172 ~]$ cat neewfile.txt
+cat: neewfile.txt: No such file or directory
+[ec2-user@ip-172-31-47-172 ~]$ cat newfile.txt
+my name is sundaram , and i am learning devops
+w
+[ec2-user@ip-172-31-47-172 ~]$ df
+Filesystem       1K-blocks    Used Available Use% Mounted on
+devtmpfs              4096       0      4096   0% /dev
+tmpfs               463280       0    463280   0% /dev/shm
+tmpfs               185312     428    184884   1% /run
+/dev/nvme0n1p1     8310764 1621376   6689388  20% /
+tmpfs               463280       0    463280   0% /tmp
+/dev/nvme0n1p128     10202    1314      8888  13% /boot/efi
+tmpfs                92656       0     92656   0% /run/user/1000
+[ec2-user@ip-172-31-47-172 ~]$ df -h
+Filesystem        Size  Used Avail Use% Mounted on
+devtmpfs          4.0M     0  4.0M   0% /dev
+tmpfs             453M     0  453M   0% /dev/shm
+tmpfs             181M  428K  181M   1% /run
+/dev/nvme0n1p1    8.0G  1.6G  6.4G  20% /
+tmpfs             453M     0  453M   0% /tmp
+/dev/nvme0n1p128   10M  1.3M  8.7M  13% /boot/efi
+tmpfs              91M     0   91M   0% /run/user/1000
+[ec2-user@ip-172-31-47-172 ~]$ du .
+4       ./.ssh
+16      ./linusdevops
+44      .
+[ec2-user@ip-172-31-47-172 ~]$ echo "in this terminals the commands related to login , disk functionality exists"
+in this terminals the commands related to login , disk functionality exists
+[ec2-user@ip-172-31-47-172 ~]$ ps
+    PID TTY          TIME CMD
+  23202 pts/0    00:00:00 bash
+  23586 pts/0    00:00:00 ps
+[ec2-user@ip-172-31-47-172 ~]$ top
+top - 06:04:27 up 11:18,  1 user,  load average: 0.00, 0.00, 0.00
+Tasks:  99 total,   1 running,  98 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  0.3 us,  0.0 sy,  0.0 ni, 99.7 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+MiB Mem :    904.8 total,    484.7 free,    181.2 used,    239.0 buff/cache
+MiB Swap:      0.0 total,      0.0 free,      0.0 used.    593.8 avail Mem
+
+    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND
+      1 root      20   0  172204  17164  10640 S   0.0   1.9   0:02.63 systemd
+      2 root      20   0       0      0      0 S   0.0   0.0   0:00.01 kthreadd
+      3 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_gp
+      4 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 rcu_par_gp
+      5 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 slub_flushwq
+      6 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 netns
+      8 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/0:0H-events_highpri
+     10 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 mm_percpu_wq
+     11 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_kthread
+     12 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_rude_kthread
+     13 root      20   0       0      0      0 I   0.0   0.0   0:00.00 rcu_tasks_trace_kthread
+     14 root      20   0       0      0      0 S   0.0   0.0   0:00.29 ksoftirqd/0
+     15 root      20   0       0      0      0 I   0.0   0.0   0:00.54 rcu_preempt
+     16 root      rt   0       0      0      0 S   0.0   0.0   0:00.15 migration/0
+     18 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/0
+     19 root      20   0       0      0      0 S   0.0   0.0   0:00.00 cpuhp/1
+     20 root      rt   0       0      0      0 S   0.0   0.0   0:00.18 migration/1
+     21 root      20   0       0      0      0 S   0.0   0.0   0:00.29 ksoftirqd/1
+     23 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kworker/1:0H-events_highpri
+     26 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kdevtmpfs
+     27 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 inet_frag_wq
+     28 root      20   0       0      0      0 S   0.0   0.0   0:00.06 kauditd
+     29 root      20   0       0      0      0 S   0.0   0.0   0:00.01 khungtaskd
+     30 root      20   0       0      0      0 S   0.0   0.0   0:00.00 oom_reaper
+     32 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 writeback
+     33 root      20   0       0      0      0 S   0.0   0.0   0:01.03 kcompactd0
+     34 root      39  19       0      0      0 S   0.0   0.0   0:00.00 khugepaged
+     35 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 cryptd
+     36 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kintegrityd
+     37 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 kblockd
+     38 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 blkcg_punt_bio
+     40 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 tpm_dev_wq
+     41 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 md
+     42 root       0 -20       0      0      0 I   0.0   0.0   0:00.00 edac-poller
+     43 root     -51   0       0      0      0 S   0.0   0.0   0:00.00 watchdogd
+     44 root       0 -20       0      0      0 I   0.0   0.0   0:00.08 kworker/0:1H-kblockd
+     52 root      20   0       0      0      0 S   0.0   0.0   0:00.00 kswapd0
+[ec2-user@ip-172-31-47-172 ~]$ fuser
+No process specification given
+Usage: fuser [-fIMuvw] [-a|-s] [-4|-6] [-c|-m|-n SPACE]
+             [-k [-i] [-SIGNAL]] NAME...
+       fuser -l
+       fuser -V
+Show which processes use the named files, sockets, or filesystems.
+
+  -a,--all              display unused files too
+  -i,--interactive      ask before killing (ignored without -k)
+  -I,--inode            use always inodes to compare files
+  -k,--kill             kill processes accessing the named file
+  -l,--list-signals     list available signal names
+  -m,--mount            show all processes using the named filesystems or
+                        block device
+  -M,--ismountpoint     fulfill request only if NAME is a mount point
+  -n,--namespace SPACE  search in this name space (file, udp, or tcp)
+  -s,--silent           silent operation
+  -SIGNAL               send this signal instead of SIGKILL
+  -u,--user             display user IDs
+  -v,--verbose          verbose output
+  -w,--writeonly        kill only processes with write access
+  -V,--version          display version information
+  -4,--ipv4             search IPv4 sockets only
+  -6,--ipv6             search IPv6 sockets only
+  -                     reset options
+
+  udp/tcp names: [local_port][,[rmt_host][,[rmt_port]]]
+
+[ec2-user@ip-172-31-47-172 ~]$ free
+               total        used        free      shared  buff/cache   available
+Mem:          926560      186100      495552         432      244908      607476
+Swap:              0           0           0
+[ec2-user@ip-172-31-47-172 ~]$ free -h
+               total        used        free      shared  buff/cache   available
+Mem:           904Mi       181Mi       483Mi       0.0Ki       239Mi       593Mi
+Swap:             0B          0B          0B
+[ec2-user@ip-172-31-47-172 ~]$ nohup free -h
+nohup: ignoring input and appending output to 'nohup.out'
+[ec2-user@ip-172-31-47-172 ~]$ ls
+linusdevops  newfile.txt  nohup.out
+[ec2-user@ip-172-31-47-172 ~]$ cat nohup.out
+               total        used        free      shared  buff/cache   available
+Mem:           904Mi       181Mi       483Mi       0.0Ki       239Mi       593Mi
+Swap:             0B          0B          0B
+[ec2-user@ip-172-31-47-172 ~]$ nohup df -h
+nohup: ignoring input and appending output to 'nohup.out'
+[ec2-user@ip-172-31-47-172 ~]$ cat nohup.out
+               total        used        free      shared  buff/cache   available
+Mem:           904Mi       181Mi       483Mi       0.0Ki       239Mi       593Mi
+Swap:             0B          0B          0B
+Filesystem        Size  Used Avail Use% Mounted on
+devtmpfs          4.0M     0  4.0M   0% /dev
+tmpfs             453M     0  453M   0% /dev/shm
+tmpfs             181M  428K  181M   1% /run
+/dev/nvme0n1p1    8.0G  1.6G  6.4G  20% /
+tmpfs             453M     0  453M   0% /tmp
+/dev/nvme0n1p128   10M  1.3M  8.7M  13% /boot/efi
+tmpfs              91M     0   91M   0% /run/user/1000
+[ec2-user@ip-172-31-47-172 ~]$ vimstat
+-bash: vimstat: command not found
+[ec2-user@ip-172-31-47-172 ~]$ vimstat -a
+-bash: vimstat: command not found
+[ec2-user@ip-172-31-47-172 ~]$ vmstat
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st
+ 0  0      0 514004   2168 242860    0    0     2    10   16   28  0  0 100  0  0
+[ec2-user@ip-172-31-47-172 ~]$ vmstat -a
+procs -----------memory---------- ---swap-- -----io---- -system-- ------cpu-----
+ r  b   swpd   free  inact active   si   so    bi    bo   in   cs us sy id wa st
+ 0  0      0 514004 193904  73300    0    0     2    10   16   28  0  0 100  0  0
+
+
