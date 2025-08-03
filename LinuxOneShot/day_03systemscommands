@@ -258,5 +258,218 @@ sudo: yum-get: command not found
 
 
 
+
+User management commands :
+
+useradd -> useradd -m jethalal (m means make directory in home , make other user)
+if flag m not in cmd thgen create a folder into parent folder
+
+[ec2-user@ip-172-31-47-172 ~]$ echo "user management commands"
+user management commands
+[ec2-user@ip-172-31-47-172 ~]$ useradd -m jethalal
+useradd: Permission denied.
+useradd: cannot lock /etc/passwd; try again later.
+[ec2-user@ip-172-31-47-172 ~]$ sudo useradd -m jethalal
+[ec2-user@ip-172-31-47-172 ~]$ ls
+linusdevops  newfile.txt  nohup.out
+[ec2-user@ip-172-31-47-172 ~]$ cd linusdevops
+[ec2-user@ip-172-31-47-172 linusdevops]$ ls
+demofile.txt  hello.txt  newfile.txt  softlinkfile  softlinkfile.txt  solftdevopsfile.txt
+[ec2-user@ip-172-31-47-172 linusdevops]$ cd ..
+[ec2-user@ip-172-31-47-172 ~]$ ls
+linusdevops  newfile.txt  nohup.out
+[ec2-user@ip-172-31-47-172 ~]$ cd ..
+[ec2-user@ip-172-31-47-172 home]$ ls\
+> ;
+ec2-user  jethalal
+[ec2-user@ip-172-31-47-172 home]$
+
+
+passwd -> set up the user password , 
+ec2-user  jethalal
+[ec2-user@ip-172-31-47-172 home]$ sudo passwd jethalal
+Changing password for user jethalal.
+New password:
+BAD PASSWORD: The password is shorter than 8 characters
+Retype new password:
+Sorry, passwords do not match.
+New password:
+BAD PASSWORD: The password fails the dictionary check - it is too simplistic/systematic
+Retype new password:
+passwd: all authentication tokens updated successfully.
+[ec2-user@ip-172-31-47-172 home]$ 
+
+su -> switrch user in system
+[ec2-user@ip-172-31-47-172 home]$ client_loop: send disconnect: Connection reset
+
+C:\Users\hp\Downloads>ssh -i "Linuxdevops.pem" ec2-user@ec2-13-48-42-245.eu-north-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Aug  3 08:16:53 2025 from 106.219.237.190
+[ec2-user@ip-172-31-47-172 ~]$ su jethalal
+Password:
+[jethalal@ip-172-31-47-172 ec2-user]$ whoami
+jethalal
+
+Last login: Sun Aug  3 08:16:53 2025 from 106.219.237.190
+[ec2-user@ip-172-31-47-172 ~]$ su jethalal
+Password:
+[jethalal@ip-172-31-47-172 ec2-user]$ whoami
+jethalal
+[jethalal@ip-172-31-47-172 ec2-user]$ pwd
+/home/ec2-user
+[jethalal@ip-172-31-47-172 ec2-user]$ exit
+exit
+[ec2-user@ip-172-31-47-172 ~]$ cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+daemon:x:2:2:daemon:/sbin:/sbin/nologin
+adm:x:3:4:adm:/var/adm:/sbin/nologin
+lp:x:4:7:lp:/var/spool/lpd:/sbin/nologin
+sync:x:5:0:sync:/sbin:/bin/sync
+shutdown:x:6:0:shutdown:/sbin:/sbin/shutdown
+halt:x:7:0:halt:/sbin:/sbin/halt
+mail:x:8:12:mail:/var/spool/mail:/sbin/nologin
+operator:x:11:0:operator:/root:/sbin/nologin
+games:x:12:100:games:/usr/games:/sbin/nologin
+ftp:x:14:50:FTP User:/var/ftp:/sbin/nologin
+nobody:x:65534:65534:Kernel Overflow User:/:/sbin/nologin
+dbus:x:81:81:System message bus:/:/sbin/nologin
+systemd-network:x:192:192:systemd Network Management:/:/usr/sbin/nologin
+systemd-oom:x:999:999:systemd Userspace OOM Killer:/:/usr/sbin/nologin
+systemd-resolve:x:193:193:systemd Resolver:/:/usr/sbin/nologin
+sshd:x:74:74:Privilege-separated SSH:/usr/share/empty.sshd:/sbin/nologin
+rpc:x:32:32:Rpcbind Daemon:/var/lib/rpcbind:/sbin/nologin
+libstoragemgmt:x:997:997:daemon account for libstoragemgmt:/:/usr/sbin/nologin
+systemd-coredump:x:996:996:systemd Core Dumper:/:/usr/sbin/nologin
+systemd-timesync:x:995:995:systemd Time Synchronization:/:/usr/sbin/nologin
+chrony:x:994:994:chrony system user:/var/lib/chrony:/sbin/nologin
+ec2-instance-connect:x:993:993::/home/ec2-instance-connect:/sbin/nologin
+stapunpriv:x:159:159:systemtap unprivileged user:/var/lib/stapunpriv:/sbin/nologin
+rpcuser:x:29:29:RPC Service User:/var/lib/nfs:/sbin/nologin
+tcpdump:x:72:72::/:/sbin/nologin
+ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+jethalal:x:1001:1001::/home/jethalal:/bin/bash
+[ec2-user@ip-172-31-47-172 ~]$
+
+Remove user -> sudo userdel jethalal
+
+tcpdump:x:72:72::/:/sbin/nologin
+ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+jethalal:x:1001:1001::/home/jethalal:/bin/bash
+[ec2-user@ip-172-31-47-172 ~]$ sudo userdel jethalal
+[ec2-user@ip-172-31-47-172 ~]$ su jethalal
+su: user jethalal does not exist or the user entry does not contain all the required fields
+
+make group -> sudo groupadd devops
+list of groups -> cat /etc/groups
+list of users -> cat /etc/passwd
+
+[ec2-user@ip-172-31-47-172 home]$ sudo useradd bhide
+[ec2-user@ip-172-31-47-172 home]$ sudo useradd iyer
+[ec2-user@ip-172-31-47-172 home]$ ls
+bhide  ec2-user  iyer  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ sudo groupadd devops
+[ec2-user@ip-172-31-47-172 home]$ ls
+bhide  ec2-user  iyer  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ cat /etc/group
+root:x:0:
+bin:x:1:
+daemon:x:2:
+sys:x:3:
+adm:x:4:ec2-user
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mem:x:8:
+kmem:x:9:
+wheel:x:10:ec2-user
+cdrom:x:11:
+mail:x:12:
+man:x:15:
+dialout:x:18:
+floppy:x:19:
+games:x:20:
+tape:x:33:
+video:x:39:
+ftp:x:50:
+lock:x:54:
+audio:x:63:
+users:x:100:
+nobody:x:65534:
+utmp:x:22:
+utempter:x:35:
+dbus:x:81:
+input:x:104:
+kvm:x:36:
+render:x:105:
+sgx:x:106:
+systemd-journal:x:190:ec2-user
+systemd-network:x:192:
+systemd-oom:x:999:
+systemd-resolve:x:193:
+ssh_keys:x:998:
+sshd:x:74:
+rpc:x:32:
+libstoragemgmt:x:997:
+systemd-coredump:x:996:
+systemd-timesync:x:995:
+chrony:x:994:
+ec2-instance-connect:x:993:
+stapusr:x:156:
+stapsys:x:157:
+stapdev:x:158:
+stapunpriv:x:159:stapunpriv
+rpcuser:x:29:
+tcpdump:x:72:
+screen:x:84:
+ec2-user:x:1000:
+tappu:x:1001:
+bhide:x:1002:
+iyer:x:1003:
+devops:x:1004:
+
+Note : jabbhi koi user add hota hai uska bhi group banta hai
+
+add thev user into group -> sudo gpasswd -a username groupname
+add multiple uwsers into group -> sudo gpasswd -M usernames groupname
+
+devops:x:1004:
+[ec2-user@ip-172-31-47-172 home]$ sudo groupadd tester
+[ec2-user@ip-172-31-47-172 home]$ sudo gpasswd -a jethalal devops
+gpasswd: user 'jethalal' does not exist
+[ec2-user@ip-172-31-47-172 home]$ cd ..
+[ec2-user@ip-172-31-47-172 /]$ lws
+-bash: lws: command not found
+[ec2-user@ip-172-31-47-172 /]$ ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[ec2-user@ip-172-31-47-172 /]$ cd ..
+[ec2-user@ip-172-31-47-172 /]$ cd ..
+[ec2-user@ip-172-31-47-172 /]$ ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[ec2-user@ip-172-31-47-172 /]$ cd /home/
+[ec2-user@ip-172-31-47-172 home]$ ls
+bhide  ec2-user  iyer  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ sudo gpasswd -a jethalal devops
+gpasswd: user 'jethalal' does not exist
+[ec2-user@ip-172-31-47-172 home]$ sudo gpasswd -a tappu devops
+Adding user tappu to group devops
+
+
+
+
+
+
+
+
+
  
 
