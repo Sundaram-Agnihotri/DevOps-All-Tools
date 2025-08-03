@@ -1,0 +1,1068 @@
+day - 04 
+
+networking commands :
+
+ping : command to check data transfer or rececive at any application is or not
+data transfer and receive in form of packets
+
+netstat : give all information about network 
+
+ifconfig -> show all network interfaces in system
+
+traceroute and tracepath -> yeh batata hai ki route kya hai meri request ka , youtube se service lene k liye  , path dena hai ki kitni hops krke pahuche hai waha prr
+
+tracepath -> acche se dekha tha hai
+
+mtr command -> if i wnat to execute tracepath and ping together
+mtr -> my trace route
+
+nslookup -> koi domain dhang se kaam kr raha hai ki nhi
+
+telnet -> same as nslookup with port number , help to connect with domain , ip with port number
+
+hostname -> give the host name
+
+iwconfi8g -> shows all wireless attachments
+
+ss -> same as netstat (advanced)
+
+domain ip address ki whole information -> dig command
+
+whois -> all information about domain (buy,sell)
+
+arp -> system ka mqac addre4ss find kr skte hai
+
+ifplugstatus -> batata hai ki interface chal rhe hai ki nhi
+
+curl vs wget -> 
+
+curl -> api end pointys ko call krne k liye hoti hai / to get the response from the server
+
+cmd : curl -x get api endpoint
+jq -> curl k output ko sunder banana hai to curl cmd ka saath pipe pe laga doo jq
+
+wget -> download anything from the internet in system
+cmd -> wget download file link
+
+watch -> cmd chsla krr brr brr output dekhna hai to watch kr lo (in every 2 seconds)
+hrr itne time baad loop phir se chala dega woo 
+
+nmap -> site ko scan krna hai 
+
+route -> vpc ke route table ko dikhata hai
+
+[ec2-user@ip-172-31-47-172 ~]$ echo "networking commands"
+networking commands
+[ec2-user@ip-172-31-47-172 ~]$ ping
+ping: usage error: Destination address required
+[ec2-user@ip-172-31-47-172 ~]$ ping trainwithshubham.com
+PING trainwithshubham.com (15.197.225.128) 56(84) bytes of data.
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=1 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=2 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=3 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=4 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=5 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=6 ttl=248 time=3.23 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=7 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=8 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=9 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=10 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=11 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=12 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=13 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=14 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=15 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=16 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=17 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=18 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=19 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=20 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=21 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=22 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=23 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=24 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=25 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=26 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=27 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=28 ttl=248 time=3.14 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=29 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=30 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=31 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=32 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=33 ttl=248 time=3.18 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=34 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=35 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=36 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=37 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=38 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=39 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=40 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=41 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=42 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=43 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=44 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=45 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=46 ttl=248 time=3.14 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=47 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=48 ttl=248 time=3.13 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=49 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=50 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=51 ttl=248 time=3.14 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=52 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=53 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=54 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=55 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=56 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=57 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=58 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=59 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=60 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=61 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=62 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=63 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=64 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=65 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=66 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=67 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=68 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=69 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=70 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=71 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=72 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=73 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=74 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=75 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=76 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=77 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=78 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=79 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=80 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=81 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=82 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=83 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=84 ttl=248 time=3.07 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=85 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=86 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=87 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=88 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=89 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=90 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=91 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=92 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=93 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=94 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=95 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=96 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=97 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=98 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=99 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=100 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=101 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=102 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=103 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=104 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=105 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=106 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=107 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=108 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=109 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=110 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=111 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=112 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=113 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=114 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=115 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=116 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=117 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=118 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=119 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=120 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=121 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=122 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=123 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=124 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=125 ttl=248 time=3.13 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=126 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=127 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=128 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=129 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=130 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=131 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=132 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=133 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=134 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=135 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=136 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=137 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=138 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=139 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=140 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=141 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=142 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=143 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=144 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=145 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=146 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=147 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=148 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=149 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=150 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=151 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=152 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=153 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=154 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=155 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=156 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=157 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=158 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=159 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=160 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=161 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=162 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=163 ttl=248 time=3.15 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=164 ttl=248 time=3.12 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=165 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=166 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=167 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=168 ttl=248 time=3.10 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=169 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=170 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=171 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=172 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=173 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=174 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=175 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=176 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=177 ttl=248 time=3.08 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=178 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=179 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=180 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=181 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=182 ttl=248 time=3.09 ms
+q64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=183 ttl=248 time=3.11 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=184 ttl=248 time=3.09 ms
+q64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=185 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=186 ttl=248 time=3.09 ms
+64 bytes from aec037177372cc6cd.awsglobalaccelerator.com (15.197.225.128): icmp_seq=187 ttl=248 time=3.09 ms
+^C
+--- trainwithshubham.com ping statistics ---
+187 packets transmitted, 187 received, 0% packet loss, time 186281ms
+rtt min/avg/max/mdev = 3.074/3.098/3.231/0.019 ms
+[ec2-user@ip-172-31-47-172 ~]$ netstat
+Active Internet connections (w/o servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0    216 ip-172-31-47-172.eu:ssh 106.219.235.190:56028   ESTABLISHED
+tcp        0      0 ip-172-31-47-172.eu:ssh 106.219.235.190:55526   ESTABLISHED
+tcp        0      0 ip-172-31-47-172.eu:ssh 106.219.235.190:55700   ESTABLISHED
+Active UNIX domain sockets (w/o servers)
+Proto RefCnt Flags       Type       State         I-Node   Path
+unix  2      [ ]         DGRAM      CONNECTED     13773
+unix  3      [ ]         STREAM     CONNECTED     13734
+unix  3      [ ]         DGRAM      CONNECTED     86170
+unix  2      [ ]         DGRAM                    16685    /run/chrony/chronyd.sock
+unix  3      [ ]         DGRAM      CONNECTED     13615
+unix  2      [ ]         DGRAM                    86168    /run/user/1000/systemd/notify
+unix  3      [ ]         STREAM     CONNECTED     13597
+unix  2      [ ]         DGRAM      CONNECTED     13611
+unix  3      [ ]         STREAM     CONNECTED     13608    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     13735
+unix  3      [ ]         DGRAM      CONNECTED     86169
+unix  3      [ ]         DGRAM      CONNECTED     629      /run/systemd/notify
+unix  3      [ ]         STREAM     CONNECTED     85568    /run/dbus/system_bus_socket
+unix  2      [ ]         DGRAM      CONNECTED     13497
+unix  3      [ ]         STREAM     CONNECTED     14643    /run/systemd/journal/stdout
+unix  9      [ ]         DGRAM      CONNECTED     645      /run/systemd/journal/dev-log
+unix  3      [ ]         DGRAM      CONNECTED     13616
+unix  14     [ ]         DGRAM      CONNECTED     647      /run/systemd/journal/socket
+unix  3      [ ]         STREAM     CONNECTED     15596    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     14026
+unix  3      [ ]         STREAM     CONNECTED     86173
+unix  2      [ ]         DGRAM      CONNECTED     13733
+unix  3      [ ]         STREAM     CONNECTED     13709
+unix  2      [ ]         DGRAM      CONNECTED     119114
+unix  2      [ ]         DGRAM      CONNECTED     17468
+unix  2      [ ]         DGRAM      CONNECTED     85542
+unix  3      [ ]         STREAM     CONNECTED     109579
+unix  3      [ ]         STREAM     CONNECTED     85508
+unix  3      [ ]         STREAM     CONNECTED     109578
+unix  3      [ ]         STREAM     CONNECTED     16000
+unix  3      [ ]         STREAM     CONNECTED     14151
+unix  3      [ ]         STREAM     CONNECTED     86147    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     14154    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     15569
+unix  3      [ ]         STREAM     CONNECTED     17138    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     15578
+unix  3      [ ]         DGRAM      CONNECTED     14147
+unix  3      [ ]         STREAM     CONNECTED     16584    /run/systemd/journal/stdout
+unix  3      [ ]         DGRAM      CONNECTED     14149
+unix  2      [ ]         DGRAM      CONNECTED     109573
+unix  3      [ ]         STREAM     CONNECTED     17445
+unix  3      [ ]         STREAM     CONNECTED     13997    /run/systemd/journal/stdout
+unix  2      [ ]         DGRAM      CONNECTED     85552
+unix  3      [ ]         STREAM     CONNECTED     15592    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     15587
+unix  2      [ ]         DGRAM      CONNECTED     1008
+unix  3      [ ]         DGRAM      CONNECTED     14148
+unix  2      [ ]         DGRAM                    14055    /run/systemd/home/notify
+unix  3      [ ]         STREAM     CONNECTED     14056
+unix  2      [ ]         STREAM     CONNECTED     101892
+unix  2      [ ]         DGRAM      CONNECTED     14138
+unix  2      [ ]         DGRAM      CONNECTED     16668
+unix  2      [ ]         DGRAM      CONNECTED     14045
+unix  3      [ ]         STREAM     CONNECTED     14101
+unix  3      [ ]         STREAM     CONNECTED     14156    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     16563
+unix  3      [ ]         STREAM     CONNECTED     14118
+unix  2      [ ]         DGRAM      CONNECTED     120001
+unix  3      [ ]         STREAM     CONNECTED     14125    /run/systemd/journal/stdout
+unix  2      [ ]         STREAM     CONNECTED     118446
+unix  2      [ ]         DGRAM      CONNECTED     14074
+unix  2      [ ]         DGRAM      CONNECTED     118492
+unix  3      [ ]         STREAM     CONNECTED     14155    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14158    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14180    /run/systemd/journal/stdout
+unix  2      [ ]         STREAM     CONNECTED     108903
+unix  3      [ ]         STREAM     CONNECTED     118497
+unix  3      [ ]         STREAM     CONNECTED     14089
+unix  3      [ ]         STREAM     CONNECTED     16566    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     14172
+unix  3      [ ]         STREAM     CONNECTED     14144
+unix  2      [ ]         DGRAM      CONNECTED     120004
+unix  3      [ ]         STREAM     CONNECTED     14107    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     118498
+unix  3      [ ]         DGRAM      CONNECTED     14146
+unix  3      [ ]         STREAM     CONNECTED     102866
+unix  2      [ ]         DGRAM      CONNECTED     102861
+unix  3      [ ]         DGRAM      CONNECTED     631
+unix  2      [ ]         DGRAM      CONNECTED     15686
+unix  3      [ ]         STREAM     CONNECTED     15595    /run/systemd/journal/stdout
+unix  3      [ ]         STREAM     CONNECTED     14161    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     14157    /run/dbus/system_bus_socket
+unix  3      [ ]         DGRAM      CONNECTED     630
+unix  3      [ ]         STREAM     CONNECTED     13977
+unix  3      [ ]         STREAM     CONNECTED     15629
+unix  3      [ ]         STREAM     CONNECTED     15643
+unix  2      [ ]         DGRAM      CONNECTED     15627
+unix  3      [ ]         STREAM     CONNECTED     14153    /run/dbus/system_bus_socket
+unix  3      [ ]         STREAM     CONNECTED     102867
+unix  3      [ ]         STREAM     CONNECTED     14017
+unix  3      [ ]         STREAM     CONNECTED     15630
+Active Bluetooth connections (w/o servers)
+Proto  Destination       Source            State         PSM DCID   SCID      IMTU    OMTU Security
+Proto  Destination       Source            State     Channel
+[ec2-user@ip-172-31-47-172 ~]$ ifconfig
+ens5: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 9001
+        inet 172.31.47.172  netmask 255.255.240.0  broadcast 172.31.47.255
+        inet6 fe80::86e:50ff:fedf:67e1  prefixlen 64  scopeid 0x20<link>
+        ether 0a:6e:50:df:67:e1  txqueuelen 1000  (Ethernet)
+        RX packets 44849  bytes 4723503 (4.5 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 45056  bytes 5069309 (4.8 MiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 12  bytes 1020 (1020.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 12  bytes 1020 (1020.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+[ec2-user@ip-172-31-47-172 ~]$ traceroute youtube.com
+traceroute to youtube.com (142.250.74.174), 30 hops max, 60 byte packets
+ 1  240.3.96.15 (240.3.96.15)  2.868 ms 240.3.96.12 (240.3.96.12)  2.886 ms 240.3.96.13 (240.3.96.13)  2.918 ms
+ 2  242.8.132.1 (242.8.132.1)  2.767 ms 242.8.133.5 (242.8.133.5)  3.096 ms 242.8.133.7 (242.8.133.7)  2.957 ms
+ 3  * * *
+ 4  173.194.124.194 (173.194.124.194)  2.785 ms  2.773 ms  2.757 ms
+ 5  142.250.236.117 (142.250.236.117)  3.255 ms  3.243 ms 192.178.44.87 (192.178.44.87)  3.709 ms
+ 6  142.251.236.71 (142.251.236.71)  2.990 ms 142.251.236.73 (142.251.236.73)  2.971 ms 142.251.236.71 (142.251.236.71)  2.975 ms
+ 7  arn11s12-in-f14.1e100.net (142.250.74.174)  3.087 ms  3.086 ms  2.804 ms
+[ec2-user@ip-172-31-47-172 ~]$ tracepath youtube.com
+ 1?: [LOCALHOST]                      pmtu 9001
+ 1:  ip-172-31-32-1.eu-north-1.compute.internal            0.056ms pmtu 1500
+ 1:  240.3.96.15                                           2.944ms asymm  4
+ 2:  242.8.133.135                                         3.450ms asymm  5
+ 3:  no reply
+ 4:  173.194.124.194                                       2.728ms asymm  5
+ 5:  no reply
+ 6:  no reply
+ 7:  no reply
+ 8:  no reply
+ 9:  no reply
+10:  no reply
+11:  no reply
+12:  no reply
+13:  no reply
+14:  no reply
+15:  no reply
+16:  no reply
+17:  no reply
+18:  no reply
+19:  no reply
+20:  no reply
+21:  no reply
+22:  no reply
+23:  no reply
+24:  no reply
+25:  no reply
+26:  no reply
+27:  no reply
+28:  no reply
+29:  no reply
+30:  no reply
+     Too many hops: pmtu 1500
+     Resume: pmtu 1500
+[ec2-user@ip-172-31-47-172 ~]$ mtr youtube.com
+-bash: mtr: command not found
+[ec2-user@ip-172-31-47-172 ~]$ nslookup
+> youtube.com
+Server:         172.31.0.2
+Address:        172.31.0.2#53
+
+Non-authoritative answer:
+Name:   youtube.com
+Address: 142.250.74.46
+Name:   youtube.com
+Address: 2a00:1450:400f:802::200e
+> ;
+Server:         172.31.0.2
+Address:        172.31.0.2#53
+
+** server can't find \;: NXDOMAIN
+>
+>
+>
+>
+>
+> q
+Server:         172.31.0.2
+Address:        172.31.0.2#53
+
+** server can't find q: NXDOMAIN
+> ^C
+>
+>
+>
+>
+>
+>
+>   telnet youtube.com
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$ telnet youtube.com 80
+-bash: telnet: command not found
+[ec2-user@ip-172-31-47-172 ~]$  hostname youtube.com
+hostname: you must be root to change the host name
+[ec2-user@ip-172-31-47-172 ~]$  hostname
+ip-172-31-47-172.eu-north-1.compute.internal
+[ec2-user@ip-172-31-47-172 ~]$ ip address show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host noprefixroute
+       valid_lft forever preferred_lft forever
+2: ens5: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 9001 qdisc mq state UP group default qlen 1000
+    link/ether 0a:6e:50:df:67:e1 brd ff:ff:ff:ff:ff:ff
+    altname enp0s5
+    altname eni-0da653d4ae2a9bc5d
+    altname device-number-0.0
+    inet 172.31.47.172/20 metric 512 brd 172.31.47.255 scope global dynamic ens5
+       valid_lft 3582sec preferred_lft 3582sec
+    inet6 fe80::86e:50ff:fedf:67e1/64 scope link proto kernel_ll
+       valid_lft forever preferred_lft forever
+[ec2-user@ip-172-31-47-172 ~]$ iwconfig
+-bash: iwconfig: command not found
+[ec2-user@ip-172-31-47-172 ~]$ sudo yum install -y wireless-tools
+Last metadata expiration check: 3:13:04 ago on Sun Aug  3 08:05:22 2025.
+No match for argument: wireless-tools
+Error: Unable to find a match: wireless-tools
+[ec2-user@ip-172-31-47-172 ~]$ sudo yum install -y wireless-tools
+Last metadata expiration check: 3:13:43 ago on Sun Aug  3 08:05:22 2025.
+No match for argument: wireless-tools
+Error: Unable to find a match: wireless-tools
+[ec2-user@ip-172-31-47-172 ~]$ iwconfig
+-bash: iwconfig: command not found
+[ec2-user@ip-172-31-47-172 ~]$ brew install iwconfig
+-bash: brew: command not found
+[ec2-user@ip-172-31-47-172 ~]$ ss
+Netid          State             Recv-Q           Send-Q                                    Local Address:Port                             Peer Address:Port
+u_dgr          ESTAB             0                0                                                     * 13773                                       * 647
+u_str          ESTAB             0                0                                                     * 13734                                       * 13735
+u_dgr          ESTAB             0                0                                                     * 86170                                       * 86169
+u_dgr          ESTAB             0                0                                                     * 13615                                       * 13616
+u_str          ESTAB             0                0                                                     * 13597                                       * 13608
+u_dgr          ESTAB             0                0                                                     * 13611                                       * 647
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 13608                                       * 13597
+u_str          ESTAB             0                0                                                     * 13735                                       * 13734
+u_dgr          ESTAB             0                0                                                     * 86169                                       * 86170
+u_dgr          ESTAB             0                0                                   /run/systemd/notify 629                                         * 0
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 85568                                       * 86173
+u_dgr          ESTAB             0                0                                                     * 13497                                       * 647
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 14643                                       * 13709
+u_dgr          ESTAB             0                0                          /run/systemd/journal/dev-log 645                                         * 0
+u_dgr          ESTAB             0                0                                                     * 13616                                       * 13615
+u_dgr          ESTAB             0                0                           /run/systemd/journal/socket 647                                         * 0
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 15596                                       * 14026
+u_str          ESTAB             0                0                                                     * 14026                                       * 15596
+u_str          ESTAB             0                0                                                     * 86173                                       * 85568
+u_dgr          ESTAB             0                0                                                     * 13733                                       * 645
+u_str          ESTAB             0                0                                                     * 13709                                       * 14643
+u_dgr          ESTAB             0                0                                                     * 17468                                       * 647
+u_dgr          ESTAB             0                0                                                     * 85542                                       * 645
+u_str          ESTAB             0                0                                                     * 109579                                      * 109578
+u_str          ESTAB             0                0                                                     * 85508                                       * 86147
+u_str          ESTAB             0                0                                                     * 109578                                      * 109579
+u_str          ESTAB             0                0                                                     * 16000                                       * 16584
+u_str          ESTAB             0                0                                                     * 14151                                       * 14158
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 86147                                       * 85508
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 14154                                       * 15587
+u_str          ESTAB             0                0                                                     * 15569                                       * 13997
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 17138                                       * 17445
+u_str          ESTAB             0                0                                                     * 15578                                       * 15592
+u_dgr          ESTAB             0                0                                                     * 14147                                       * 14146
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 16584                                       * 16000
+u_dgr          ESTAB             0                0                                                     * 121505                                      * 647
+u_dgr          ESTAB             0                0                                                     * 14149                                       * 14148
+u_dgr          ESTAB             0                0                                                     * 109573                                      * 645
+u_str          ESTAB             0                0                                                     * 17445                                       * 17138
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 13997                                       * 15569
+u_dgr          ESTAB             0                0                                                     * 85552                                       * 647
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 15592                                       * 15578
+u_str          ESTAB             0                0                                                     * 15587                                       * 14154
+u_dgr          ESTAB             0                0                                                     * 1008                                        * 629
+u_dgr          ESTAB             0                0                                                     * 14148                                       * 14149
+u_str          ESTAB             0                0                                                     * 14056                                       * 14155
+u_str          ESTAB             0                0                                                     * 101892                                      * 0
+u_dgr          ESTAB             0                0                                                     * 14138                                       * 647
+u_dgr          ESTAB             0                0                                                     * 16668                                       * 645
+u_dgr          ESTAB             0                0                                                     * 14045                                       * 647
+u_str          ESTAB             0                0                                                     * 14101                                       * 14107
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 14156                                       * 14089
+u_str          ESTAB             0                0                                                     * 16563                                       * 16566
+u_str          ESTAB             0                0                                                     * 14118                                       * 14125
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 14125                                       * 14118
+u_str          ESTAB             0                0                                                     * 118446                                      * 0
+u_dgr          ESTAB             0                0                                                     * 14074                                       * 647
+u_dgr          ESTAB             0                0                                                     * 118492                                      * 645
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 14155                                       * 14056
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 14158                                       * 14151
+u_dgr          ESTAB             0                0                                                     * 122247                                      * 647
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 14180                                       * 14172
+u_str          ESTAB             0                0                                                     * 108903                                      * 0
+u_str          ESTAB             0                0                                                     * 118497                                      * 118498
+u_str          ESTAB             0                0                                                     * 14089                                       * 14156
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 16566                                       * 16563
+u_str          ESTAB             0                0                                                     * 14172                                       * 14180
+u_dgr          ESTAB             0                0                                                     * 122250                                      * 647
+u_str          ESTAB             0                0                                                     * 14144                                       * 14157
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 14107                                       * 14101
+u_str          ESTAB             0                0                                                     * 118498                                      * 118497
+u_dgr          ESTAB             0                0                                                     * 14146                                       * 14147
+u_str          ESTAB             0                0                                                     * 102866                                      * 102867
+u_dgr          ESTAB             0                0                                                     * 102861                                      * 645
+u_dgr          ESTAB             0                0                                                     * 631                                         * 630
+u_dgr          ESTAB             0                0                                                     * 15686                                       * 645
+u_str          ESTAB             0                0                           /run/systemd/journal/stdout 15595                                       * 14017
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 14161                                       * 15643
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 14157                                       * 14144
+u_dgr          ESTAB             0                0                                                     * 630                                         * 631
+u_str          ESTAB             0                0                                                     * 13977                                       * 14153
+u_str          ESTAB             0                0                                                     * 15629                                       * 15630
+u_str          ESTAB             0                0                                                     * 15643                                       * 14161
+u_dgr          ESTAB             0                0                                                     * 15627                                       * 647
+u_str          ESTAB             0                0                           /run/dbus/system_bus_socket 14153                                       * 13977
+u_str          ESTAB             0                0                                                     * 102867                                      * 102866
+u_str          ESTAB             0                0                                                     * 14017                                       * 15595
+u_str          ESTAB             0                0                                                     * 15630                                       * 15629
+icmp6          UNCONN            0                0                                                *%ens5:ipv6-icmp                                   *:*
+tcp            ESTAB             0                52                                        172.31.47.172:ssh                           106.219.235.190:56028
+tcp            SYN-RECV          0                0                                         172.31.47.172:ssh                             68.69.186.182:35516
+tcp            ESTAB             0                0                                         172.31.47.172:ssh                           106.219.235.190:55526
+tcp            ESTAB             0                0                                         172.31.47.172:ssh                           106.219.235.190:55700
+[ec2-user@ip-172-31-47-172 ~]$ dig trainwithshubham.com
+
+; <<>> DiG 9.18.33 <<>> trainwithshubham.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 4568
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;trainwithshubham.com.          IN      A
+
+;; ANSWER SECTION:
+trainwithshubham.com.   300     IN      A       15.197.225.128
+trainwithshubham.com.   300     IN      A       3.33.251.168
+
+;; Query time: 0 msec
+;; SERVER: 172.31.0.2#53(172.31.0.2) (UDP)
+;; WHEN: Sun Aug 03 11:23:47 UTC 2025
+;; MSG SIZE  rcvd: 81
+
+[ec2-user@ip-172-31-47-172 ~]$ whois youtube.com
+-bash: whois: command not found
+[ec2-user@ip-172-31-47-172 ~]$     sudo yum install whois
+Last metadata expiration check: 3:20:37 ago on Sun Aug  3 08:05:22 2025.
+Dependencies resolved.
+========================================================================================================================================================================
+ Package                              Architecture                      Version                                            Repository                              Size
+========================================================================================================================================================================
+Installing:
+ whois                                x86_64                            5.5.10-1.amzn2023.0.2                              amazonlinux                             76 k
+Installing dependencies:
+ whois-nls                            noarch                            5.5.10-1.amzn2023.0.2                              amazonlinux                             34 k
+
+Transaction Summary
+========================================================================================================================================================================
+Install  2 Packages
+
+Total download size: 109 k
+Installed size: 349 k
+Is this ok [y/N]: y
+Downloading Packages:
+(1/2): whois-nls-5.5.10-1.amzn2023.0.2.noarch.rpm                                                                                       770 kB/s |  34 kB     00:00
+(2/2): whois-5.5.10-1.amzn2023.0.2.x86_64.rpm                                                                                           973 kB/s |  76 kB     00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   1.0 MB/s | 109 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                1/1
+  Installing       : whois-nls-5.5.10-1.amzn2023.0.2.noarch                                                                                                         1/2
+  Installing       : whois-5.5.10-1.amzn2023.0.2.x86_64                                                                                                             2/2
+  Running scriptlet: whois-5.5.10-1.amzn2023.0.2.x86_64                                                                                                             2/2
+  Verifying        : whois-5.5.10-1.amzn2023.0.2.x86_64                                                                                                             1/2
+  Verifying        : whois-nls-5.5.10-1.amzn2023.0.2.noarch                                                                                                         2/2
+
+Installed:
+  whois-5.5.10-1.amzn2023.0.2.x86_64                                               whois-nls-5.5.10-1.amzn2023.0.2.noarch
+
+Complete!
+[ec2-user@ip-172-31-47-172 ~]$ whois youtube.com
+   Domain Name: YOUTUBE.COM
+   Registry Domain ID: 142504053_DOMAIN_COM-VRSN
+   Registrar WHOIS Server: whois.markmonitor.com
+   Registrar URL: http://www.markmonitor.com
+   Updated Date: 2025-01-14T10:06:34Z
+   Creation Date: 2005-02-15T05:13:12Z
+   Registry Expiry Date: 2026-02-15T05:13:12Z
+   Registrar: MarkMonitor Inc.
+   Registrar IANA ID: 292
+   Registrar Abuse Contact Email: abusecomplaints@markmonitor.com
+   Registrar Abuse Contact Phone: +1.2086851750
+   Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+   Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+   Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+   Domain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited
+   Domain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited
+   Domain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited
+   Name Server: NS1.GOOGLE.COM
+   Name Server: NS2.GOOGLE.COM
+   Name Server: NS3.GOOGLE.COM
+   Name Server: NS4.GOOGLE.COM
+   DNSSEC: unsigned
+   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of whois database: 2025-08-03T11:25:58Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois
+database through the use of electronic processes that are high-volume and
+automated except as reasonably necessary to register domain names or
+modify existing registrations; the Data in VeriSign Global Registry
+Services' ("VeriSign") Whois database is provided by VeriSign for
+information purposes only, and to assist persons in obtaining information
+about or related to a domain name registration record. VeriSign does not
+guarantee its accuracy. By submitting a Whois query, you agree to abide
+by the following terms of use: You agree that you may use this Data only
+for lawful purposes and that under no circumstances will you use this Data
+to: (1) allow, enable, or otherwise support the transmission of mass
+unsolicited, commercial advertising or solicitations via e-mail, telephone,
+or facsimile; or (2) enable high volume, automated, electronic processes
+that apply to VeriSign (or its computer systems). The compilation,
+repackaging, dissemination or other use of this Data is expressly
+prohibited without the prior written consent of VeriSign. You agree not to
+use electronic processes that are automated and high-volume to access or
+query the Whois database except as reasonably necessary to register
+domain names or modify existing registrations. VeriSign reserves the right
+to restrict your access to the Whois database in its sole discretion to ensure
+operational stability.  VeriSign may restrict or terminate your access to the
+Whois database for failure to abide by these terms of use. VeriSign
+reserves the right to modify these terms at any time.
+
+The Registry database contains ONLY .COM, .NET, .EDU domains and
+Registrars.
+Domain Name: youtube.com
+Registry Domain ID: 142504053_DOMAIN_COM-VRSN
+Registrar WHOIS Server: whois.markmonitor.com
+Registrar URL: http://www.markmonitor.com
+Updated Date: 2025-01-14T10:06:34+0000
+Creation Date: 2005-02-15T05:13:12+0000
+Registrar Registration Expiration Date: 2026-02-15T00:00:00+0000
+Registrar: MarkMonitor, Inc.
+Registrar IANA ID: 292
+Registrar Abuse Contact Email: abusecomplaints@markmonitor.com
+Registrar Abuse Contact Phone: +1.2086851750
+Domain Status: clientUpdateProhibited (https://www.icann.org/epp#clientUpdateProhibited)
+Domain Status: clientTransferProhibited (https://www.icann.org/epp#clientTransferProhibited)
+Domain Status: clientDeleteProhibited (https://www.icann.org/epp#clientDeleteProhibited)
+Domain Status: serverUpdateProhibited (https://www.icann.org/epp#serverUpdateProhibited)
+Domain Status: serverTransferProhibited (https://www.icann.org/epp#serverTransferProhibited)
+Domain Status: serverDeleteProhibited (https://www.icann.org/epp#serverDeleteProhibited)
+Registrant Organization: Google LLC
+Registrant Country: US
+Registrant Email: Select Request Email Form at https://domains.markmonitor.com/whois/youtube.com
+Tech Email: Select Request Email Form at https://domains.markmonitor.com/whois/youtube.com
+Name Server: ns3.google.com
+Name Server: ns2.google.com
+Name Server: ns4.google.com
+Name Server: ns1.google.com
+DNSSEC: unsigned
+URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
+>>> Last update of WHOIS database: 2025-08-03T11:23:39+0000 <<<
+
+For more information on WHOIS status codes, please visit:
+  https://www.icann.org/resources/pages/epp-status-codes
+
+If you wish to contact this domain’s Registrant or Technical
+contact, and such email address is not visible above, you may do so via our web
+form, pursuant to ICANN’s Temporary Specification. To verify that you are not a
+robot, please enter your email address to receive a link to a page that
+facilitates email communication with the relevant contact(s).
+
+Web-based WHOIS:
+  https://domains.markmonitor.com/whois/contact/youtube.com
+
+If you have a legitimate interest in viewing the non-public WHOIS details, send
+your request and the reasons for your request to whoisrequest@markmonitor.com
+and specify the domain name in the subject line. We will review that request and
+may ask for supporting documentation and explanation.
+
+The data in MarkMonitor’s WHOIS database is provided for information purposes,
+and to assist persons in obtaining information about or related to a domain
+name’s registration record. While MarkMonitor believes the data to be accurate,
+the data is provided "as is" with no guarantee or warranties regarding its
+accuracy.
+
+By submitting a WHOIS query, you agree that you will use this data only for
+lawful purposes and that, under no circumstances will you use this data to:
+  (1) allow, enable, or otherwise support the transmission by email, telephone,
+or facsimile of mass, unsolicited, commercial advertising, or spam; or
+  (2) enable high volume, automated, or electronic processes that send queries,
+data, or email to MarkMonitor (or its systems) or the domain name contacts (or
+its systems).
+
+MarkMonitor reserves the right to modify these terms at any time.
+
+By submitting this query, you agree to abide by this policy.
+
+MarkMonitor Domain Management(TM)
+Protecting companies and consumers in a digital world.
+
+Visit MarkMonitor at https://www.markmonitor.com
+Contact us at +1.8007459229
+In Europe, at +44.02032062220
+--
+[ec2-user@ip-172-31-47-172 ~]$ whois trainwithshubham.com
+   Domain Name: TRAINWITHSHUBHAM.COM
+   Registry Domain ID: 2658723068_DOMAIN_COM-VRSN
+   Registrar WHOIS Server: whois.godaddy.com
+   Registrar URL: http://www.godaddy.com
+   Updated Date: 2024-12-04T06:25:14Z
+   Creation Date: 2021-12-01T11:33:03Z
+   Registry Expiry Date: 2026-12-01T11:33:03Z
+   Registrar: GoDaddy.com, LLC
+   Registrar IANA ID: 146
+   Registrar Abuse Contact Email: abuse@godaddy.com
+   Registrar Abuse Contact Phone: 480-624-2505
+   Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+   Domain Status: clientRenewProhibited https://icann.org/epp#clientRenewProhibited
+   Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+   Domain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited
+   Name Server: NS45.DOMAINCONTROL.COM
+   Name Server: NS46.DOMAINCONTROL.COM
+   DNSSEC: unsigned
+   URL of the ICANN Whois Inaccuracy Complaint Form: https://www.icann.org/wicf/
+>>> Last update of whois database: 2025-08-03T11:26:43Z <<<
+
+For more information on Whois status codes, please visit https://icann.org/epp
+
+NOTICE: The expiration date displayed in this record is the date the
+registrar's sponsorship of the domain name registration in the registry is
+currently set to expire. This date does not necessarily reflect the expiration
+date of the domain name registrant's agreement with the sponsoring
+registrar.  Users may consult the sponsoring registrar's Whois database to
+view the registrar's reported date of expiration for this registration.
+
+TERMS OF USE: You are not authorized to access or query our Whois
+database through the use of electronic processes that are high-volume and
+automated except as reasonably necessary to register domain names or
+modify existing registrations; the Data in VeriSign Global Registry
+Services' ("VeriSign") Whois database is provided by VeriSign for
+information purposes only, and to assist persons in obtaining information
+about or related to a domain name registration record. VeriSign does not
+guarantee its accuracy. By submitting a Whois query, you agree to abide
+by the following terms of use: You agree that you may use this Data only
+for lawful purposes and that under no circumstances will you use this Data
+to: (1) allow, enable, or otherwise support the transmission of mass
+unsolicited, commercial advertising or solicitations via e-mail, telephone,
+or facsimile; or (2) enable high volume, automated, electronic processes
+that apply to VeriSign (or its computer systems). The compilation,
+repackaging, dissemination or other use of this Data is expressly
+prohibited without the prior written consent of VeriSign. You agree not to
+use electronic processes that are automated and high-volume to access or
+query the Whois database except as reasonably necessary to register
+domain names or modify existing registrations. VeriSign reserves the right
+to restrict your access to the Whois database in its sole discretion to ensure
+operational stability.  VeriSign may restrict or terminate your access to the
+Whois database for failure to abide by these terms of use. VeriSign
+reserves the right to modify these terms at any time.
+
+The Registry database contains ONLY .COM, .NET, .EDU domains and
+Registrars.
+This WHOIS server is being retired. Please use our RDAP service instead. Rate limit exceeded. Try again after: 2562047h47m16.854775807s.
+[ec2-user@ip-172-31-47-172 ~]$ arp
+Address                  HWtype  HWaddress           Flags Mask            Iface
+ip-172-31-32-1.eu-north  ether   0a:8f:72:a9:2d:1d   C                     ens5
+[ec2-user@ip-172-31-47-172 ~]$ nc youtube.com\
+> ;
+-bash: nc: command not found
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$ nc trainwithshubham.com 80
+-bash: nc: command not found
+[ec2-user@ip-172-31-47-172 ~]$ ifplugstatus
+-bash: ifplugstatus: command not found
+[ec2-user@ip-172-31-47-172 ~]$ client_loop: send disconnect: Connection reset
+
+C:\Users\hp\Downloads>ssh -i "Linuxdevops.pem" ec2-user@ec2-13-48-42-245.eu-north-1.compute.amazonaws.com
+   ,     #_
+   ~\_  ####_        Amazon Linux 2023
+  ~~  \_#####\
+  ~~     \###|
+  ~~       \#/ ___   https://aws.amazon.com/linux/amazon-linux-2023
+   ~~       V~' '->
+    ~~~         /
+      ~~._.   _/
+         _/ _/
+       _/m/'
+Last login: Sun Aug  3 10:44:16 2025 from 106.219.235.190
+[ec2-user@ip-172-31-47-172 ~]$ iptables
+-bash: iptables: command not found
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$
+[ec2-user@ip-172-31-47-172 ~]$     sudo yum install iptables-services -y\
+> ;
+Last metadata expiration check: 3:35:19 ago on Sun Aug  3 08:05:22 2025.
+Dependencies resolved.
+========================================================================================================================================================================
+ Package                                        Architecture                   Version                                        Repository                           Size
+========================================================================================================================================================================
+Installing:
+ iptables-services                              noarch                         1.8.8-3.amzn2023.0.2                           amazonlinux                          18 k
+Installing dependencies:
+ iptables-libs                                  x86_64                         1.8.8-3.amzn2023.0.2                           amazonlinux                         401 k
+ iptables-nft                                   x86_64                         1.8.8-3.amzn2023.0.2                           amazonlinux                         183 k
+ iptables-utils                                 x86_64                         1.8.8-3.amzn2023.0.2                           amazonlinux                          43 k
+ libnetfilter_conntrack                         x86_64                         1.0.8-2.amzn2023.0.2                           amazonlinux                          58 k
+ libnfnetlink                                   x86_64                         1.0.1-19.amzn2023.0.2                          amazonlinux                          30 k
+ libnftnl                                       x86_64                         1.2.2-2.amzn2023.0.2                           amazonlinux                          84 k
+
+Transaction Summary
+========================================================================================================================================================================
+Install  7 Packages
+
+Total download size: 816 k
+Installed size: 2.9 M
+Downloading Packages:
+(1/7): iptables-nft-1.8.8-3.amzn2023.0.2.x86_64.rpm                                                                                     4.8 MB/s | 183 kB     00:00
+(2/7): iptables-libs-1.8.8-3.amzn2023.0.2.x86_64.rpm                                                                                    8.9 MB/s | 401 kB     00:00
+(3/7): iptables-services-1.8.8-3.amzn2023.0.2.noarch.rpm                                                                                358 kB/s |  18 kB     00:00
+(4/7): iptables-utils-1.8.8-3.amzn2023.0.2.x86_64.rpm                                                                                   2.0 MB/s |  43 kB     00:00
+(5/7): libnetfilter_conntrack-1.0.8-2.amzn2023.0.2.x86_64.rpm                                                                           2.7 MB/s |  58 kB     00:00
+(6/7): libnfnetlink-1.0.1-19.amzn2023.0.2.x86_64.rpm                                                                                    1.4 MB/s |  30 kB     00:00
+(7/7): libnftnl-1.2.2-2.amzn2023.0.2.x86_64.rpm                                                                                         3.3 MB/s |  84 kB     00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                   7.0 MB/s | 816 kB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                1/1
+  Installing       : libnfnetlink-1.0.1-19.amzn2023.0.2.x86_64                                                                                                      1/7
+  Installing       : libnetfilter_conntrack-1.0.8-2.amzn2023.0.2.x86_64                                                                                             2/7
+  Installing       : iptables-libs-1.8.8-3.amzn2023.0.2.x86_64                                                                                                      3/7
+  Installing       : libnftnl-1.2.2-2.amzn2023.0.2.x86_64                                                                                                           4/7
+  Installing       : iptables-nft-1.8.8-3.amzn2023.0.2.x86_64                                                                                                       5/7
+  Running scriptlet: iptables-nft-1.8.8-3.amzn2023.0.2.x86_64                                                                                                       5/7
+  Installing       : iptables-utils-1.8.8-3.amzn2023.0.2.x86_64                                                                                                     6/7
+  Installing       : iptables-services-1.8.8-3.amzn2023.0.2.noarch                                                                                                  7/7
+  Running scriptlet: iptables-services-1.8.8-3.amzn2023.0.2.noarch                                                                                                  7/7
+  Verifying        : iptables-libs-1.8.8-3.amzn2023.0.2.x86_64                                                                                                      1/7
+  Verifying        : iptables-nft-1.8.8-3.amzn2023.0.2.x86_64                                                                                                       2/7
+  Verifying        : iptables-services-1.8.8-3.amzn2023.0.2.noarch                                                                                                  3/7
+  Verifying        : iptables-utils-1.8.8-3.amzn2023.0.2.x86_64                                                                                                     4/7
+  Verifying        : libnetfilter_conntrack-1.0.8-2.amzn2023.0.2.x86_64                                                                                             5/7
+  Verifying        : libnfnetlink-1.0.1-19.amzn2023.0.2.x86_64                                                                                                      6/7
+  Verifying        : libnftnl-1.2.2-2.amzn2023.0.2.x86_64                                                                                                           7/7
+
+Installed:
+  iptables-libs-1.8.8-3.amzn2023.0.2.x86_64           iptables-nft-1.8.8-3.amzn2023.0.2.x86_64                    iptables-services-1.8.8-3.amzn2023.0.2.noarch
+  iptables-utils-1.8.8-3.amzn2023.0.2.x86_64          libnetfilter_conntrack-1.0.8-2.amzn2023.0.2.x86_64          libnfnetlink-1.0.1-19.amzn2023.0.2.x86_64
+  libnftnl-1.2.2-2.amzn2023.0.2.x86_64
+
+Complete!
+[ec2-user@ip-172-31-47-172 ~]$ iptables
+iptables v1.8.8 (nf_tables): no command specified
+Try `iptables -h' or 'iptables --help' for more information.
+[ec2-user@ip-172-31-47-172 ~]$     sudo iptables -L -v -n
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination
+[ec2-user@ip-172-31-47-172 ~]$ sudo iptables --list-rules
+-P INPUT ACCEPT
+-P FORWARD ACCEPT
+-P OUTPUT ACCEPT
+[ec2-user@ip-172-31-47-172 ~]$ nmap -v mpgi.edu.in
+-bash: nmap: command not found
+[ec2-user@ip-172-31-47-172 ~]$  sudo yum install nmap -y
+Last metadata expiration check: 3:43:08 ago on Sun Aug  3 08:05:22 2025.
+Dependencies resolved.
+========================================================================================================================================================================
+ Package                              Architecture                      Version                                            Repository                              Size
+========================================================================================================================================================================
+Installing:
+ nmap                                 x86_64                            3:7.93-4.amzn2023                                  amazonlinux                            5.5 M
+Installing dependencies:
+ libssh2                              x86_64                            1.10.0-1.amzn2023.0.3                              amazonlinux                            120 k
+ nmap-ncat                            x86_64                            3:7.93-4.amzn2023                                  amazonlinux                            225 k
+
+Transaction Summary
+========================================================================================================================================================================
+Install  3 Packages
+
+Total download size: 5.9 M
+Installed size: 25 M
+Downloading Packages:
+(1/3): nmap-ncat-7.93-4.amzn2023.x86_64.rpm                                                                                             4.8 MB/s | 225 kB     00:00
+(2/3): libssh2-1.10.0-1.amzn2023.0.3.x86_64.rpm                                                                                         1.3 MB/s | 120 kB     00:00
+(3/3): nmap-7.93-4.amzn2023.x86_64.rpm                                                                                                   36 MB/s | 5.5 MB     00:00
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                                                                                                    32 MB/s | 5.9 MB     00:00
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Preparing        :                                                                                                                                                1/1
+  Installing       : nmap-ncat-3:7.93-4.amzn2023.x86_64                                                                                                             1/3
+  Running scriptlet: nmap-ncat-3:7.93-4.amzn2023.x86_64                                                                                                             1/3
+  Installing       : libssh2-1.10.0-1.amzn2023.0.3.x86_64                                                                                                           2/3
+  Installing       : nmap-3:7.93-4.amzn2023.x86_64                                                                                                                  3/3
+  Running scriptlet: nmap-3:7.93-4.amzn2023.x86_64                                                                                                                  3/3
+  Verifying        : libssh2-1.10.0-1.amzn2023.0.3.x86_64                                                                                                           1/3
+  Verifying        : nmap-3:7.93-4.amzn2023.x86_64                                                                                                                  2/3
+  Verifying        : nmap-ncat-3:7.93-4.amzn2023.x86_64                                                                                                             3/3
+
+Installed:
+  libssh2-1.10.0-1.amzn2023.0.3.x86_64                      nmap-3:7.93-4.amzn2023.x86_64                      nmap-ncat-3:7.93-4.amzn2023.x86_64
+
+Complete!
+[ec2-user@ip-172-31-47-172 ~]$ nmap -v mpgi.edu.in
+Starting Nmap 7.93 ( https://nmap.org ) at 2025-08-03 11:48 UTC
+Initiating Ping Scan at 11:48
+Scanning mpgi.edu.in (46.28.46.91) [2 ports]
+Completed Ping Scan at 11:48, 0.15s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 11:48
+Completed Parallel DNS resolution of 1 host. at 11:48, 0.14s elapsed
+Initiating Connect Scan at 11:48
+Scanning mpgi.edu.in (46.28.46.91) [1000 ports]
+Discovered open port 80/tcp on 46.28.46.91
+Discovered open port 443/tcp on 46.28.46.91
+Discovered open port 21/tcp on 46.28.46.91
+Discovered open port 3306/tcp on 46.28.46.91
+Completed Connect Scan at 11:49, 17.68s elapsed (1000 total ports)
+Nmap scan report for mpgi.edu.in (46.28.46.91)
+Host is up (0.15s latency).
+Other addresses for mpgi.edu.in (not scanned): 2a02:4780:11:1360:0:1af2:681e:3
+Not shown: 962 filtered tcp ports (no-response)
+PORT      STATE  SERVICE
+20/tcp    closed ftp-data
+21/tcp    open   ftp
+80/tcp    open   http
+443/tcp   open   https
+2100/tcp  closed amiganetfs
+2103/tcp  closed zephyr-clt
+2105/tcp  closed eklogin
+2106/tcp  closed ekshell
+2107/tcp  closed msmq-mgmt
+2111/tcp  closed kx
+2119/tcp  closed gsigatekeeper
+2121/tcp  closed ccproxy-ftp
+2126/tcp  closed pktcable-cops
+2135/tcp  closed gris
+2144/tcp  closed lv-ffx
+2160/tcp  closed apc-2160
+2161/tcp  closed apc-agent
+2170/tcp  closed eyetv
+2179/tcp  closed vmrdp
+2190/tcp  closed tivoconnect
+2191/tcp  closed tvbus
+2196/tcp  closed unknown
+2200/tcp  closed ici
+2222/tcp  closed EtherNetIP-1
+2251/tcp  closed dif-port
+2260/tcp  closed apc-2260
+2288/tcp  closed netml
+2301/tcp  closed compaqdiag
+2323/tcp  closed 3d-nfsd
+2366/tcp  closed qip-login
+2381/tcp  closed compaq-https
+2382/tcp  closed ms-olap3
+2383/tcp  closed ms-olap4
+2393/tcp  closed ms-olap1
+2394/tcp  closed ms-olap2
+2399/tcp  closed fmpro-fdal
+3306/tcp  open   mysql
+60443/tcp closed unknown
+
+Read data files from: /usr/bin/../share/nmap
+Nmap done: 1 IP address (1 host up) scanned in 18.09 seconds
+[ec2-user@ip-172-31-47-172 ~]$ route
+Kernel IP routing table
+Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
+default         ip-172-31-32-1. 0.0.0.0         UG    512    0        0 ens5
+ip-172-31-0-2.e ip-172-31-32-1. 255.255.255.255 UGH   512    0        0 ens5
+ip-172-31-32-0. 0.0.0.0         255.255.240.0   U     512    0        0 ens5
+ip-172-31-32-1. 0.0.0.0         255.255.255.255 UH    512    0        0 ens5
+
+
+
+
+
+
+
+
+
+
