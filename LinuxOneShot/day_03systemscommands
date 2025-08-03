@@ -464,6 +464,180 @@ gpasswd: user 'jethalal' does not exist
 Adding user tappu to group devops
 
 
+           File permission commands
+
+if we have to change the permission of dir -> chmod 777
+
+Use ls -l to see file permissions:
+
+bash
+Copy
+Edit
+-rwxr-xr-- 1 user group  1234 Jan 1 12:00 myfile.sh
+Breakdown:
+pgsql
+Copy
+Edit
+- rwx r-x r--  
+| |   |   |
+| |   |   └── Others: read
+| |   └────── Group: read + execute
+| └────────── Owner: read + write + execute
+└──────────── Type: '-' = file, 'd' = directory
+🛠️ 4. Changing Permissions
+a. Using chmod (change mode):
+bash
+Copy
+Edit
+chmod u+x file.txt       # Add execute for user
+chmod g-w file.txt       # Remove write from group
+chmod o=r file.txt       # Set read-only for others
+chmod 755 script.sh      # rwxr-xr-x (numeric method)
+Octal (numeric) representation:
+
+Number	Permission	Binary	Meaning
+0	---	000	no permissions
+1	--x	001	execute only
+2	-w-	010	write only
+4	r--	100	read only
+7	rwx	111	full permission
+
+ls -l -> used to view detail view of file/dir, 
+
+change permission -> chmod777 file/dir name
+
+
+umask -> on file creation by default usse kya permission deni hai , yuyske liye mask
+The umask command in Unix-like systems controls the default file permissions for newly created files and directories. It sets a mask that determines which permissions are not granted by default. Essentially, the umask value is subtracted from the default permissions (666 for files, 777 for directories) to determine the final permissions of newly created items. 
+How it works:
+Default Permissions:
+Files are typically created with default permissions of 666 (read/write for owner, read/write for group, read/write for others) and directories with 777 (read/write/execute for owner, group, and others). 
+The Mask:
+The umask value is a three-digit octal number (e.g., 022) or a symbolic representation. Each digit corresponds to the permissions for the user, group, and others, respectively. 
+Stripping Permissions:
+The umask acts as a filter. If a bit is set in the umask, the corresponding permission is removed from the default. For example, a umask of 022 would result in files with 644 permissions (rw-r--r--) and directories with 755 permissions (rwxr-xr-x). 
+Octal and Symbolic Notation:
+You can specify umask using octal numbers (000-777) or symbolic notation (e.g., u=rwx,g=rx,o=rx), according to IBM. 
+Example:
+If the umask is set to 022, and a new file is created, the following happens:
+Default file permissions: 666 (rw-rw-rw-)
+umask: 022 (---w--w-r--)
+Effective permissions: 644 (rw-r--r--) 
+Commands and Usage:
+umask: Displays the current umask value. 
+umask <value>: Sets the umask to the specified value (e.g., umask 022 or umask u=rwx,g=rx,o=rx). 
+
+Table 5.10: Common umask Settings
+
+umask   User Access      Group Access        Other
+0000    all              all                 all
+0002    all              all                 read, execute
+0007    all              all                 none
+0022    all              read, execute       read, execute
+0027    all              read, execute       none
+0077    all              none                none
+
+bashrc -> bash profile
+chown -> chnage ownership  : sudo chown newuser filename
+kisi bhi file ki ownership change krni hai to a particular user , chown use kr skte hai
+
+chgrp -> kisi group ki ownership change krni hai too : sudo chgrp newgroupbname filename 
+
+[ec2-user@ip-172-31-47-172 ~]$ sudo useradd tappu
+[ec2-user@ip-172-31-47-172 ~]$ sudo useradd jethalal
+useradd: warning: the home directory /home/jethalal already exists.
+useradd: Not copying any file from skel directory into it.
+Creating mailbox file: File exists
+[ec2-user@ip-172-31-47-172 ~]$ cd ..
+[ec2-user@ip-172-31-47-172 home]$ ls
+ec2-user  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ sudo userdel jethalal
+[ec2-user@ip-172-31-47-172 home]$ ls
+ec2-user  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ sudo useradd bhide
+[ec2-user@ip-172-31-47-172 home]$ sudo useradd iyer
+[ec2-user@ip-172-31-47-172 home]$ ls
+bhide  ec2-user  iyer  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ sudo groupadd devops
+[ec2-user@ip-172-31-47-172 home]$ ls
+bhide  ec2-user  iyer  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ cat /etc/group
+root:x:0:
+bin:x:1:
+daemon:x:2:
+sys:x:3:
+adm:x:4:ec2-user
+tty:x:5:
+disk:x:6:
+lp:x:7:
+mem:x:8:
+kmem:x:9:
+wheel:x:10:ec2-user
+cdrom:x:11:
+mail:x:12:
+man:x:15:
+dialout:x:18:
+floppy:x:19:
+games:x:20:
+tape:x:33:
+video:x:39:
+ftp:x:50:
+lock:x:54:
+audio:x:63:
+users:x:100:
+nobody:x:65534:
+utmp:x:22:
+utempter:x:35:
+dbus:x:81:
+input:x:104:
+kvm:x:36:
+render:x:105:
+sgx:x:106:
+systemd-journal:x:190:ec2-user
+systemd-network:x:192:
+systemd-oom:x:999:
+systemd-resolve:x:193:
+ssh_keys:x:998:
+sshd:x:74:
+rpc:x:32:
+libstoragemgmt:x:997:
+systemd-coredump:x:996:
+systemd-timesync:x:995:
+chrony:x:994:
+ec2-instance-connect:x:993:
+stapusr:x:156:
+stapsys:x:157:
+stapdev:x:158:
+stapunpriv:x:159:stapunpriv
+rpcuser:x:29:
+tcpdump:x:72:
+screen:x:84:
+ec2-user:x:1000:
+tappu:x:1001:
+bhide:x:1002:
+iyer:x:1003:
+devops:x:1004:
+[ec2-user@ip-172-31-47-172 home]$ sudo groupadd tester
+[ec2-user@ip-172-31-47-172 home]$ sudo gpasswd -a jethalal devops
+gpasswd: user 'jethalal' does not exist
+[ec2-user@ip-172-31-47-172 home]$ cd ..
+[ec2-user@ip-172-31-47-172 /]$ lws
+-bash: lws: command not found
+[ec2-user@ip-172-31-47-172 /]$ ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[ec2-user@ip-172-31-47-172 /]$ cd ..
+[ec2-user@ip-172-31-47-172 /]$ cd ..
+[ec2-user@ip-172-31-47-172 /]$ ls
+bin  boot  dev  etc  home  lib  lib64  local  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+[ec2-user@ip-172-31-47-172 /]$ cd /home/
+[ec2-user@ip-172-31-47-172 home]$ ls
+bhide  ec2-user  iyer  jethalal  tappu
+[ec2-user@ip-172-31-47-172 home]$ sudo gpasswd -a jethalal devops
+gpasswd: user 'jethalal' does not exist
+[ec2-user@ip-172-31-47-172 home]$ sudo gpasswd -a tappu devops
+Adding user tappu to group devops
+
+
 
 
 
