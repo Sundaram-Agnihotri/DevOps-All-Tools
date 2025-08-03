@@ -638,6 +638,30 @@ gpasswd: user 'jethalal' does not exist
 Adding user tappu to group devops
 
 
+Compression commands :
+
+zip -> used to zip the files into one folder , by bdefault in ubuntu the zip is not install , so firstly i have to install it using apt
+sudo apt install zip
+
+after installing the zip library : zip newfilezipname souce file (for which content i have to zip it)
+if i want to zip folder
+zip -r zipname sourcefolder
+
+Same as for Unzip commands 
+gunzip , gzip are same as unzip and zip commands
+
+copy a file from local tyo remote server : shubham@Shubhams-MBP scp_test % vim secret_file.txt
+shubham@Shubhams-MBP scp_test % scp -i "/Users/shubham/Downloads/linux-for-devops-key.pem" secret_file.txt ubuntu@ec2-3-15-221-86.us-east-2.compute.amazonaws.com:/home/ubuntu
+
+using scp
+
+copy a folder frpom remote to local system : shubham@Shubhams-MBP scp_test % scp -i "/Users/shubham/Downloads/linux-for-devops-key.pem" -r ubuntu@ec2-3-15-221-86.us-east-2.compute.amazonaws.com:/home/ubuntu/linux_for_devops .
+
+
+
+
+
+
 
 
 
