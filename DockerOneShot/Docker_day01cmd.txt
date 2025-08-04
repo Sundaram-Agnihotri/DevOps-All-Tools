@@ -1,0 +1,388 @@
+Docker commands "
+
+1 : update the system -> sudo apt-get update
+2 : install docker -> sudo apget install docker.io
+3 : chk if there is a docker running -> sudo systemctl status docker
+4 : docker application engine is same as docker service
+5 : ubuntu@ip-172-31-42-152:~$ docker ps
+permission denied while trying to connect to the Docker daemon socket 
+at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.47/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+
+user ko docker ki permission nhi hai ,o user ko docker ke group pe add krna padega permission k liye 
+
+ sudo usermod -aG docker $USER -> user ko modify kr do group pe add kr lo docker naame se hai jo
+ 
+6 : newGrp docker -> refresh of group docker
+7 : docker stop containerid -> to stop the container
+
+
+ubuntu@ip-172-31-42-152:~$ echo "docker"
+docker
+ubuntu@ip-172-31-42-152:~$ docker ps
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.47/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+ubuntu@ip-172-31-42-152:~$ whoami
+ubuntu
+ubuntu@ip-172-31-42-152:~$ sudo usermod -ag docker $user
+Usage: usermod [options] LOGIN
+
+Options:
+  -a, --append                  append the user to the supplemental GROUPS
+                                mentioned by the -G option without removing
+                                the user from other groups
+  -b, --badname                 allow bad names
+  -c, --comment COMMENT         new value of the GECOS field
+  -d, --home HOME_DIR           new home directory for the user account
+  -e, --expiredate EXPIRE_DATE  set account expiration date to EXPIRE_DATE
+  -f, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -g, --gid GROUP               force use GROUP as new primary group
+  -G, --groups GROUPS           new list of supplementary GROUPS
+  -h, --help                    display this help message and exit
+  -l, --login NEW_LOGIN         new value of the login name
+  -L, --lock                    lock the user account
+  -m, --move-home               move contents of the home directory to the
+                                new location (use only with -d)
+  -o, --non-unique              allow using duplicate (non-unique) UID
+  -p, --password PASSWORD       use encrypted password for the new password
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -r, --remove                  remove the user from only the supplemental GROUPS
+                                mentioned by the -G option without removing
+                                the user from other groups
+  -R, --root CHROOT_DIR         directory to chroot into
+  -s, --shell SHELL             new login shell for the user account
+  -u, --uid UID                 new UID for the user account
+  -U, --unlock                  unlock the user account
+  -v, --add-subuids FIRST-LAST  add range of subordinate uids
+  -V, --del-subuids FIRST-LAST  remove range of subordinate uids
+  -w, --add-subgids FIRST-LAST  add range of subordinate gids
+  -W, --del-subgids FIRST-LAST  remove range of subordinate gids
+  -Z, --selinux-user SEUSER     new SELinux user mapping for the user account
+
+ubuntu@ip-172-31-42-152:~$ sudo usermod -aG docker $USER
+ubuntu@ip-172-31-42-152:~$ docker ps
+permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Get "http://%2Fvar%2Frun%2Fdocker.sock/v1.47/containers/json": dial unix /var/run/docker.sock: connect: permission denied
+ubuntu@ip-172-31-42-152:~$ newgrp docker
+ubuntu@ip-172-31-42-152:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+ubuntu@ip-172-31-42-152:~$ sudo syustem ctlsystem status docker
+sudo: syustem: command not found
+ubuntu@ip-172-31-42-152:~$ sudo system ctlsystem status docker
+sudo: system: command not found
+ubuntu@ip-172-31-42-152:~$ sudo systemctl status docker
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/usr/lib/systemd/system/docker.service; enabled; preset: enabled)
+     Active: active (running) since Mon 2025-08-04 17:53:15 UTC; 17min ago
+TriggeredBy: ● docker.socket
+       Docs: https://docs.docker.com
+   Main PID: 743 (dockerd)
+      Tasks: 9
+     Memory: 100.8M (peak: 101.4M)
+        CPU: 615ms
+     CGroup: /system.slice/docker.service
+             └─743 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock
+
+Aug 04 17:53:14 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:14.087611175Z" level=info msg="OTEL tracing is no>Aug 04 17:53:14 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:14.097647275Z" level=info msg="detected 127.0.0.5>Aug 04 17:53:14 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:14.418397248Z" level=info msg="[graphdriver] usin>Aug 04 17:53:14 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:14.431235885Z" level=info msg="Loading containers>Aug 04 17:53:15 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:15.085151368Z" level=info msg="Default bridge (do>Aug 04 17:53:15 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:15.309093592Z" level=info msg="Loading containers>Aug 04 17:53:15 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:15.389338238Z" level=info msg="Docker daemon" com>Aug 04 17:53:15 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:15.390241773Z" level=info msg="Daemon has complet>Aug 04 17:53:15 ip-172-31-42-152 dockerd[743]: time="2025-08-04T17:53:15.481798991Z" level=info msg="API listen on /run>Aug 04 17:53:15 ip-172-31-42-152 systemd[1]: Started docker.service - Docker Application Container Engine.
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$ docker images
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+ubuntu@ip-172-31-42-152:~$ docker login
+
+USING WEB-BASED LOGIN
+To sign in with credentials on the command line, use 'docker login -u <username>'
+
+Your one-time device confirmation code is: DNND-RQCC
+Press ENTER to open your browser or submit your device code here: https://login.docker.com/activate
+
+Waiting for authentication in the browser…
+
+WARNING! Your password will be stored unencrypted in /home/ubuntu/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credential-stores
+
+Login Succeeded
+ubuntu@ip-172-31-42-152:~$ docker pull hello-world
+Using default tag: latest
+latest: Pulling from library/hello-world
+e6590344b1a5: Pull complete
+Digest: sha256:ec153840d1e635ac434fab5e377081f17e0e15afab27beb3f726c3265039cfff
+Status: Downloaded newer image for hello-world:latest
+docker.io/library/hello-world:latest
+ubuntu@ip-172-31-42-152:~$ docer images
+Command 'docer' not found, did you mean:
+  command 'docker' from snap docker (28.1.1+1)
+  command 'docker' from deb docker.io (26.1.3-0ubuntu1~24.04.1)
+  command 'docker' from deb podman-docker (4.9.3+ds1-1ubuntu0.2)
+See 'snap info <snapname>' for additional versions.
+ubuntu@ip-172-31-42-152:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+hello-world   latest    74cc54e27dc4   6 months ago   10.1kB
+ubuntu@ip-172-31-42-152:~$ docker run hello-world
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+ubuntu@ip-172-31-42-152:~$ docker pull mysql
+Using default tag: latest
+latest: Pulling from library/mysql
+3ea90c3a51a3: Pull complete
+afaae28bbee0: Pull complete
+2ba13c6c03c3: Pull complete
+31c5b5c14efc: Pull complete
+938fdecc6487: Pull complete
+19f77cf53703: Pull complete
+6c4bb10a796d: Pull complete
+468bb678f509: Pull complete
+90fd4b47993e: Pull complete
+6dfd9f336bec: Pull complete
+Digest: sha256:082063dca94535c76b91c6ef9b9f6748810e546887af5e8574a8cfa11eace184
+Status: Downloaded newer image for mysql:latest
+docker.io/library/mysql:latest
+ubuntu@ip-172-31-42-152:~$ docketr images
+Command 'docketr' not found, did you mean:
+  command 'docker' from snap docker (28.1.1+1)
+  command 'docker' from deb docker.io (26.1.3-0ubuntu1~24.04.1)
+  command 'docker' from deb podman-docker (4.9.3+ds1-1ubuntu0.2)
+See 'snap info <snapname>' for additional versions.
+ubuntu@ip-172-31-42-152:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+mysql         latest    fe7f726d39a6   13 days ago    921MB
+hello-world   latest    74cc54e27dc4   6 months ago   10.1kB
+ubuntu@ip-172-31-42-152:~$ docker run -e MYSQL_ROOT_PASSWORD = root mysql
+docker: invalid reference format.
+See 'docker run --help'.
+ubuntu@ip-172-31-42-152:~$ docker run -e MYSQL_ROOT_PASSWORD=root mysql
+2025-08-04 18:34:21+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 9.4.0-1.el9 started.
+2025-08-04 18:34:22+00:00 [Note] [Entrypoint]: Switching to dedicated user 'mysql'
+2025-08-04 18:34:22+00:00 [Note] [Entrypoint]: Entrypoint script for MySQL Server 9.4.0-1.el9 started.
+2025-08-04 18:34:22+00:00 [Note] [Entrypoint]: Initializing database files
+2025-08-04T18:34:22.500807Z 0 [System] [MY-015017] [Server] MySQL Server Initialization - start.
+2025-08-04T18:34:22.503377Z 0 [System] [MY-013169] [Server] /usr/sbin/mysqld (mysqld 9.4.0) initializing of server in progress as process 79
+2025-08-04T18:34:22.524256Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2025-08-04T18:34:23.162373Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2025-08-04T18:34:24.729507Z 6 [Warning] [MY-010453] [Server] root@localhost is created with an empty password ! Please consider switching off the --initialize-insecure option.
+2025-08-04T18:34:27.117237Z 0 [System] [MY-015018] [Server] MySQL Server Initialization - end.
+2025-08-04 18:34:27+00:00 [Note] [Entrypoint]: Database files initialized
+2025-08-04 18:34:27+00:00 [Note] [Entrypoint]: Starting temporary server
+2025-08-04T18:34:27.186911Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2025-08-04T18:34:27.481938Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 9.4.0) starting as process 116
+2025-08-04T18:34:27.481979Z 0 [System] [MY-015590] [Server] MySQL Server has access to 2 logical CPUs.
+2025-08-04T18:34:27.482010Z 0 [System] [MY-015590] [Server] MySQL Server has access to 958529536 bytes of physical memory.
+2025-08-04T18:34:27.515614Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2025-08-04T18:34:28.072681Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2025-08-04T18:34:28.535433Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2025-08-04T18:34:28.535476Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2025-08-04T18:34:28.543930Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2025-08-04T18:34:28.593418Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Socket: /var/run/mysqld/mysqlx.sock
+2025-08-04T18:34:28.593461Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '9.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  MySQL Community Server - GPL.
+2025-08-04 18:34:28+00:00 [Note] [Entrypoint]: Temporary server started.
+'/var/lib/mysql/mysql.sock' -> '/var/run/mysqld/mysqld.sock'
+Warning: Unable to load '/usr/share/zoneinfo/iso3166.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/leapseconds' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/tzdata.zi' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone.tab' as time zone. Skipping it.
+Warning: Unable to load '/usr/share/zoneinfo/zone1970.tab' as time zone. Skipping it.
+
+2025-08-04 18:34:30+00:00 [Note] [Entrypoint]: Stopping temporary server
+2025-08-04T18:34:30.777771Z 11 [System] [MY-013172] [Server] Received SHUTDOWN from user root. Shutting down mysqld (Version: 9.4.0).
+2025-08-04T18:34:31.903724Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 9.4.0)  MySQL Community Server - GPL.
+2025-08-04T18:34:31.903745Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+2025-08-04 18:34:32+00:00 [Note] [Entrypoint]: Temporary server stopped
+
+2025-08-04 18:34:32+00:00 [Note] [Entrypoint]: MySQL init process done. Ready for start up.
+
+2025-08-04T18:34:32.801176Z 0 [System] [MY-015015] [Server] MySQL Server - start.
+2025-08-04T18:34:33.091248Z 0 [System] [MY-010116] [Server] /usr/sbin/mysqld (mysqld 9.4.0) starting as process 1
+2025-08-04T18:34:33.091288Z 0 [System] [MY-015590] [Server] MySQL Server has access to 2 logical CPUs.
+2025-08-04T18:34:33.091310Z 0 [System] [MY-015590] [Server] MySQL Server has access to 958529536 bytes of physical memory.
+2025-08-04T18:34:33.099031Z 1 [System] [MY-013576] [InnoDB] InnoDB initialization has started.
+2025-08-04T18:34:33.632726Z 1 [System] [MY-013577] [InnoDB] InnoDB initialization has ended.
+2025-08-04T18:34:33.960873Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2025-08-04T18:34:33.960909Z 0 [System] [MY-013602] [Server] Channel mysql_main configured to support TLS. Encrypted connections are now supported for this channel.
+2025-08-04T18:34:33.965122Z 0 [Warning] [MY-011810] [Server] Insecure configuration for --pid-file: Location '/var/run/mysqld' in the path is accessible to all OS users. Consider choosing a different directory.
+2025-08-04T18:34:33.997353Z 0 [System] [MY-011323] [Server] X Plugin ready for connections. Bind-address: '::' port: 33060, socket: /var/run/mysqld/mysqlx.sock
+2025-08-04T18:34:33.997440Z 0 [System] [MY-010931] [Server] /usr/sbin/mysqld: ready for connections. Version: '9.4.0'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  MySQL Community Server - GPL.
+
+
+
+
+^C
+
+
+
+
+
+
+
+2025-08-04T18:39:07.240582Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 9.4.0).
+2025-08-04T18:39:08.253917Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 9.4.0)  MySQL Community Server - GPL.
+2025-08-04T18:39:08.253938Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+
+
+Microsoft Windows [Version 10.0.19045.6159]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\hp>cd downloads
+
+C:\Users\hp\Downloads>ssh -i "dockerdevops.pem" ubuntu@ec2-13-61-27-124.eu-north-1.compute.amazonaws.com
+Welcome to Ubuntu 24.04.2 LTS (GNU/Linux 6.8.0-1029-aws x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon Aug  4 18:38:10 UTC 2025
+
+  System load:  0.08              Temperature:           -273.1 C
+  Usage of /:   56.3% of 6.71GB   Processes:             116
+  Memory usage: 76%               Users logged in:       1
+  Swap usage:   0%                IPv4 address for ens5: 172.31.42.152
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+38 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+
+*** System restart required ***
+Last login: Mon Aug  4 17:53:46 2025 from 223.225.58.130
+ubuntu@ip-172-31-42-152:~$ docker images
+REPOSITORY    TAG       IMAGE ID       CREATED        SIZE
+mysql         latest    fe7f726d39a6   13 days ago    921MB
+hello-world   latest    74cc54e27dc4   6 months ago   10.1kB
+ubuntu@ip-172-31-42-152:~$ docker ps
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS                 NAMES
+6b4a52387a3e   mysql     "docker-entrypoint.s…"   4 minutes ago   Up 4 minutes   3306/tcp, 33060/tcp   pedantic_gagarin
+ubuntu@ip-172-31-42-152:~$ docker stop 6b4a52387a3e
+6b4a52387a3e
+ubuntu@ip-172-31-42-152:~$
+
+: docker run -d -e MYSQL_ROOT_PASSWORD=root mysql -> run the container in detached mode
+
+
+write a docker file to run java project :
+
+: biuild an image : docker build -t java-app docker file location
+
+
+: docker build images from docker file4 and run the containder  whole commands :
+
+
+2025-08-04T18:39:07.240582Z 0 [System] [MY-013172] [Server] Received SHUTDOWN from user <via user signal>. Shutting down mysqld (Version: 9.4.0).
+2025-08-04T18:39:08.253917Z 0 [System] [MY-010910] [Server] /usr/sbin/mysqld: Shutdown complete (mysqld 9.4.0)  MySQL Community Server - GPL.
+2025-08-04T18:39:08.253938Z 0 [System] [MY-015016] [Server] MySQL Server - end.
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$
+ubuntu@ip-172-31-42-152:~$ mkdir projects
+ubuntu@ip-172-31-42-152:~$ cd projects/
+ubuntu@ip-172-31-42-152:~/projects$ ls
+ubuntu@ip-172-31-42-152:~/projects$ git clone git@github.com:LondheShubham153/simple-java-docker.git
+Cloning into 'simple-java-docker'...
+The authenticity of host 'github.com (4.225.11.194)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+ubuntu@ip-172-31-42-152:~/projects$ ls
+ubuntu@ip-172-31-42-152:~/projects$ git clone https://github.com/LondheShubham153/simple-java-docker.git
+Cloning into 'simple-java-docker'...
+remote: Enumerating objects: 13, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 13 (delta 1), reused 0 (delta 0), pack-reused 8 (from 1)
+Receiving objects: 100% (13/13), done.
+Resolving deltas: 100% (1/1), done.
+ubuntu@ip-172-31-42-152:~/projects$ ls
+simple-java-docker
+ubuntu@ip-172-31-42-152:~/projects$ cd simple-java-docker/
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ ls
+Dockerfile  README.md  src
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ echo "java project for deploying"
+java project for deploying
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ rm -v dockerfile
+rm: cannot remove 'dockerfile': No such file or directory
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ rm -v Dockerfile
+removed 'Dockerfile'
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ echo "create a dockerfile"
+create a dockerfile
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ vim Dockerfile
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ docker build -t java-app .
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon   68.1kB
+Step 1/5 : FROM openjdk:17-jdk-alpine
+17-jdk-alpine: Pulling from library/openjdk
+5843afab3874: Pull complete
+53c9466125e4: Pull complete
+d8d715783b80: Pull complete
+Digest: sha256:4b6abae565492dbe9e7a894137c966a7485154238902f2f25e9dbd9784383d81
+Status: Downloaded newer image for openjdk:17-jdk-alpine
+ ---> 264c9bdce361
+Step 2/5 : WORKDIR /app
+ ---> Running in 04fdfaa9d63f
+ ---> Removed intermediate container 04fdfaa9d63f
+ ---> 47e9b02a20e9
+Step 3/5 : COPY src/Main.java /app/Main.java
+ ---> da1d0b36c69c
+Step 4/5 : RUN javac Main.java
+ ---> Running in d7be4a107893
+ ---> Removed intermediate container d7be4a107893
+ ---> d961e1f473d0
+Step 5/5 : CMD ["java", "Main"]
+ ---> Running in e4c7349a1940
+ ---> Removed intermediate container e4c7349a1940
+ ---> 14c6031755c3
+Successfully built 14c6031755c3
+Successfully tagged java-app:latest
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ docker images
+REPOSITORY    TAG             IMAGE ID       CREATED              SIZE
+java-app      latest          14c6031755c3   About a minute ago   326MB
+mysql         latest          fe7f726d39a6   13 days ago          921MB
+hello-world   latest          74cc54e27dc4   6 months ago         10.1kB
+openjdk       17-jdk-alpine   264c9bdce361   4 years ago          326MB
+ubuntu@ip-172-31-42-152:~/projects/simple-java-docker$ docker run java-app
+Hello, Docker! Current date: Mon Aug 04 19:03:33 GMT 2025
